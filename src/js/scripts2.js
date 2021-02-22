@@ -3,41 +3,19 @@ let apiUrl = "https://superheroapi.com/api/114585350670601/";
 let heroesList = document.querySelector(".heroes-list");
 // let $modalContainer = $("#modal-container");
 
-const superHeroesList = [
-  "A-Bomb",
-  "Abe Sapien",
-  "Abin Sur",
-  "Abomination",
-  "Abraxas",
-  "Absorbing Man",
-  "Adam Monroe",
-  "Adam Strange",
-  "Agent 13",
-];
-
-// const loadHeroesList = async () => {
-//   try {
-//     let result = await fetch("src/js/data.js");
-
-//     console.log(result);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
 function getHeroesInfo() {
-  superHeroesList.forEach((name) => {
-    fetch(`${apiUrl}search/${name}`)
+  superHeroesList.forEach(async (name) => {
+    await fetch(`${apiUrl}search/${name}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.results) {
-          data.results.forEach((hero) => {
-            // console.log(hero.name);
-            // console.log(hero.image.url);
-            heroTeam.push(hero);
-            addListItem(hero);
-          });
-        }
+        // if (data.results) {
+        data.results.forEach((hero) => {
+          // console.log(hero.name);
+          // console.log(hero.image.url);
+          // heroTeam.push(hero);
+          addListItem(hero);
+        });
+        // }
       });
   });
 }
@@ -110,17 +88,41 @@ function hideModal() {
 }
 
 function showPowers() {
+  let powersArray = [];
   let powersModal = document.querySelector(".powers-modal");
-  powersModal.classList.toggle("hidden");
+  powersModal.classList.remove("hidden");
   let powersList = document.createElement("ul");
   powersModal.appendChild(powersList);
   let character = JSON.parse(localStorage.getItem("hero"));
   console.log(character.powerstats);
   for (const [key, value] of Object.entries(character.powerstats)) {
     let power = `<li>${key}: ${value}</li>`;
-    powersList.append(power);
+    powersArray.push(power);
+    console.log(powersArray);
   }
+  let closeModalButton = document.createElement("button");
+  closeModalButton.innerHTML = `<span>&times;</span>`;
+  closeModalButton.classList.add("close-modal")
+  closeModalButton.setAttribute("onclick", "closeModal()");
+  powersModal.appendChild(closeModalButton);
+  powersList.innerHTML = powersArray.join(" ");
+
+  // powersList.appendChild(newPowersArray);
 }
+
+function closeModal(){
+  console.log('clicked close modal')
+}
+
+
+
+
+
+
+
+
+
+
 
 window.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
