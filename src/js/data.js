@@ -8,38 +8,37 @@ const superHeroesList = [
   "Adam Monroe",
   "Adam Strange",
   "Agent 13",
-];
-// 10	"Agent Bob"
-// 11	"Agent Zero"
-// 12	"Air-Walker"
-// 13	"Ajax"
-// 14	"Alan Scott"
-// 15	"Alex Mercer"
-// 16	"Alex Woolsly"
-// 17	"Alfred Pennyworth"
-// 18	"Alien"
-// 19	"Allan Quatermain"
-// 20	"Amazo"
-// 21	"Ammo"
-// 22	"Ando Masahashi"
-// 23	"Angel"
-// 24	"Angel"
-// 25	"Angel Dust"
-// 26	"Angel Salvadore"
-// 27	Angela
-// 28	Animal Man
-// 29	Annihilus
-// 30	Ant-Man
-// 31	Ant-Man II
-// 32	Anti-Monitor
-// 33	Anti-Spawn
-// 34	Anti-Venom
-// 35	Apocalypse
-// 36	Aquababy
-// 37	Aqualad
-// 38	Aquaman
-// 39	Arachne
-// 40	Archangel
+  "Agent Bob",
+  "Agent Zero",
+  "Air-Walker",
+  "Ajax",
+  "Alan Scott",
+  "Alex Mercer",
+  "Alex Woolsly",
+  "Alfred Pennyworth",
+  "Alien",
+  "Allan Quatermain",
+  "Amazo",
+  "Ammo",
+  "Ando Masahashi",
+  "Angel",
+  "Angel",
+  "Angel Dust",
+  "Angel Salvadore",
+	"Angela",
+	"Animal Man",
+"Annihilus",
+	"Ant-Man",
+	"Ant-Man II",
+	"Anti-Monitor",
+	"Anti-Spawn",
+	"Anti-Venom",
+	"Apocalypse",
+"Aquababy",
+"Aqualad",
+"Aquaman",
+"Arachne",
+	"Archangel",
 // 41	Arclight
 // 42	Ardina
 // 43	Ares
@@ -721,16 +720,16 @@ const superHeroesList = [
 // 717	Wolverine
 // 718	"Wonder Girl"
 // 719	"Wonder Man"
-// 720 "Wonder Woman"
-// 721	"Wondra"
-// 722	"Wyatt Wingfoot"
-// 723	"X-23"
-// 724	"X-Man"
-// 725	"Yellow Claw"
-// 726	"Yellowjacket"
-// 727	"Yellowjacket II"
-// 728	"Ymir"
-// 729	"Yoda"
-// 730	"Zatanna"
-// 731	"Zoom"
-// ]
+"Wonder Woman",
+"Wondra",
+"Wyatt Wingfoot",
+"X-23",
+"X-Man",
+"Yellow Claw",
+"Yellowjacket",
+"Yellowjacket II",
+"Ymir",
+"Yoda",
+"Zatanna",
+"Zoom",
+]
