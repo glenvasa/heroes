@@ -4,27 +4,24 @@
   box-sizing: border-box;
 }
 
-/* body {
-  /* background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vox.com%2F2016%2F9%2F19%2F12938086%2Felectrify-everything&psig=AOvVaw0z5Qm6sMq1O0I5tKMMcSeE&ust=1614178066902000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiEjo-ggO8CFQAAAAAdAAAAABAD");
-  background-size: cover; */
-  /* transition: all 4s ease-in-out; */
-/* }  */
-
-html {
-  background: radial-gradient(circle, rgba(25,37,91,1) 18%, rgba(121,9,55,1) 52%, rgba(28,122,201,1) 76%);
+body {
+  /* background-color:rgba(0, 0, 0, 0.3) !important;  */
+  /* background: linear-gradient(90deg, rgba(43,47,66,1) 18%, rgba(17,7,11,1) 52%, rgba(3,33,57,1) 76%); */
+  /* background: linear-gradient(90deg, rgba(13,15,25,1) 18%, rgba(98,93,95,1) 52%, rgba(11,20,28,1) 76%); */
+  background: linear-gradient(90deg, rgba(13,15,25,1) 18%, rgba(7,2,4,1) 52%, rgba(11,20,28,1) 76%);
 }
+
 
 .nav-container {
   position: sticky;
   top: 0;
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: space-between; 
   align-items: center;
   background-color: white;
   height: 4rem;
   z-index: 100;
-  /* border-bottom: 1px inset rgba(0, 0, 0, 0.7) */
-  /* transition: all 4s step-start; */
+  transition: all ease-in; 
 }
 
 .nav-container h3 {
@@ -50,9 +47,19 @@ html {
 
 .nav-search {
   display: none;
-  margin: auto;
-  transition: all 2s ease-in-out;
   text-align: center;
+  margin: auto;
+  transition: all 4s ease-in;
+  animation: appear 3s;
+}
+
+@keyframes appear {
+  0% {
+    transform: scaleX(0) scaleY(0);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
 }
 
 .heroes-search > input {
@@ -60,7 +67,7 @@ html {
   justify-content: center;
   border: 1px solid black;
   box-shadow: 2px 1px 3px black;
-  width: 20rem !important;
+  width: 13rem !important;
   text-align: center;
   /* background-color: black; */
 }
@@ -89,9 +96,13 @@ html {
 .heroes-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  grid-row-gap: 15px;
+  grid-row-gap: 30px;
   grid-column-gap: 10px !important;
-  margin-left: 10px;
+  margin-left: 10px !important;
+  margin-top: 20px;
+  /* background: radial-gradient(circle, rgba(25,37,91,1) 18%, rgba(121,9,55,1) 52%, rgba(28,122,201,1) 76%); */
+  padding-left: 5px;
+  /* background-color:rgba(0, 0, 0, 0.3); */
 }
 
 .card {
@@ -116,6 +127,7 @@ html {
   background-color: red;
   width: 150px;
   margin-top: 9px;
+  padding-bottom: 4px;
   border-radius: 2px;
 }
 
