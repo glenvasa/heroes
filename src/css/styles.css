@@ -43,8 +43,11 @@ body {
 .nav-villains {
   position: absolute;
   top: 0.2rem;
-  left: 71rem;
-  /* transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); */
+  left: 111rem;
+  /* med-large desktop screen start position
+  left: 87rem; */
+  /* laptop size screen start position */
+  /* left: 71rem; */
   transition: all 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
@@ -72,6 +75,7 @@ body {
   box-shadow: 2px 1px 3px black;
   width: 13rem !important;
   text-align: center;
+  padding-left: 23px !important;
   /* background-color: black; */
 }
 
