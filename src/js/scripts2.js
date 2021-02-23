@@ -15,7 +15,6 @@ function getHeroesInfo() {
           // heroTeam.push(hero);
           addListItem(hero);
         });
-        // }
       });
   });
 }
@@ -237,10 +236,10 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
-window.addEventListener("load", getHeroesInfo());
+// window.addEventListener("load", getHeroesInfo());
 
 function search() {
-  let nav = document.querySelector(".nav");
+  let nav = document.querySelector(".heroes-search");
   nav.addEventListener("click", () => {
     let search = document.querySelector("#heroes-search");
     let li = Array.from(document.querySelectorAll(".card"));
@@ -271,4 +270,49 @@ function search() {
   });
 }
 
+function startTitleAnimation() {
+  let htitle = document.querySelector(".nav-heroes");
+  htitle.addEventListener("click", () => {
+    titleAnimation1();
+  });
+}
+
+function titleAnimation1() {
+  let htitle = document.querySelector(".nav-heroes");
+  let vtitle = document.querySelector(".nav-villains");
+  vtitle.addEventListener("transitionend", () => {
+    titleAnimation2();
+  });
+  // htitle.removeEventListener("click", () => {
+  //   titleAnimation1();
+  // });
+  htitle.style.left = "34rem";
+  vtitle.style.left = "39rem";
+}
+
+function titleAnimation2() {
+  let htitle = document.querySelector(".nav-heroes");
+  let vtitle = document.querySelector(".nav-villains");
+  htitle.style.transition = "all 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
+  vtitle.style.transition = "all 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
+  htitle.style.color = "red";
+  htitle.style.textShadow = "2px 1px black";
+  vtitle.style.color = "black";
+  vtitle.style.textShadow = "2px 1px red";
+  htitle.style.left = "20.4rem";
+  vtitle.style.left = "50.3rem";
+  htitle.addEventListener("transitionend", () => {
+    searchAppear();
+  });
+}
+
+function searchAppear() {
+  let navSearch = document.querySelector(".nav-search");
+  let navContainer = document.querySelector(".nav-container");
+  navSearch.style.display = "block";
+  navContainer.style.borderBottom = "2px groove black";
+  getHeroesInfo();
+}
+
+startTitleAnimation();
 search();
