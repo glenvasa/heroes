@@ -1,14 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
 /* body {
-  transition: all ease-in-out;
-} */
+  /* background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vox.com%2F2016%2F9%2F19%2F12938086%2Felectrify-everything&psig=AOvVaw0z5Qm6sMq1O0I5tKMMcSeE&ust=1614178066902000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiEjo-ggO8CFQAAAAAdAAAAABAD");
+  background-size: cover; */
+  /* transition: all 4s ease-in-out; */
+/* }  */
 
-nav {
-  background-color: red;
+html {
+  background: radial-gradient(circle, rgba(25,37,91,1) 18%, rgba(121,9,55,1) 52%, rgba(28,122,201,1) 76%);
+}
+
+.nav-container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  background-color: white;
   height: 4rem;
+  z-index: 100;
+  /* border-bottom: 1px inset rgba(0, 0, 0, 0.7) */
+  /* transition: all 4s step-start; */
+}
+
+.nav-container h3 {
+  font-family: Bangers;
+  font-size: 3rem;
+}
+
+.nav-heroes {
+  position: absolute;
+  top: 0.2rem;
+  left: .5rem;
+  transition: all 3s cubic-bezier(0.55, 0.055, 0.675, 0.19); 
+}
+
+
+.nav-villains {
+  position: absolute;
+  top: 0.2rem;
+  left: 71rem;
+  /* transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1); */
+  transition: all 3s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.nav-search {
+  display: none;
+  margin: auto;
+  transition: all 2s ease-in-out;
+  text-align: center;
+}
+
+.heroes-search > input {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  box-shadow: 2px 1px 3px black;
+  width: 20rem !important;
+  text-align: center;
+  /* background-color: black; */
 }
 
 .overlay {
@@ -37,7 +91,7 @@ nav {
   grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
   grid-row-gap: 15px;
   grid-column-gap: 10px !important;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .card {
@@ -48,6 +102,7 @@ nav {
   width: 180px;
   padding: 10px 0px;
   margin-left: 20px;
+  box-shadow: 2px 1px black;
   /* z-index: -1; */
 }
 
@@ -61,6 +116,7 @@ nav {
   background-color: red;
   width: 150px;
   margin-top: 9px;
+  border-radius: 2px;
 }
 
 .modal-dialog {
@@ -86,6 +142,7 @@ nav {
 }
 
 .hidden {
+  display: none;
   visibility: hidden;
 }
 
