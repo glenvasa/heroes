@@ -1,18 +1,15 @@
 let heroTeam = [];
 let apiUrl = "https://superheroapi.com/api/114585350670601/";
 let heroesList = document.querySelector(".heroes-list");
-// let $modalContainer = $("#modal-container");
 
 function getHeroesInfo() {
-  superHeroesList.forEach(async (name) => {
-    await fetch(`${apiUrl}search/${name}`)
+  console.log(superHeroesList);
+  superHeroesList.forEach((name) => {
+     fetch(`${apiUrl}search/${name}`)
       .then((response) => response.json())
       .then((data) => {
-        // if (data.results) {
         data.results.forEach((hero) => {
-          // console.log(hero.name);
-          // console.log(hero.image.url);
-          // heroTeam.push(hero);
+          heroTeam.push(hero);
           addListItem(hero);
         });
       });
@@ -20,18 +17,35 @@ function getHeroesInfo() {
 }
 
 function addListItem(hero) {
-  //   console.log(hero);
-
   let listItem = document.createElement("li");
   listItem.classList.add("card");
   listItem.setAttribute("data-name", `${hero.name}`);
-  // listItem.classList.add("list-group-item");
   heroesList.appendChild(listItem);
   listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button" class="card-button" id="hero-name" class="btn" data-toggle="modal"
   data-target="#exampleModal">${hero.name}</button>
     `;
   addButtonListener();
 }
+
+// function addListItem() {
+//   console.log(heroTeam);
+//   let newHeroTeam = heroTeam.filter((item, i, ar) => ar.indexOf(item) === i);
+//   console.log(newHeroTeam);
+//   setTimeout(() => {
+//     let newHeroTeam2 = newHeroTeam.filter((item, i, ar) => ar.indexOf(item) === i);
+//       newHeroTeam2.map((hero) => {
+//     let listItem = document.createElement("li");
+//     listItem.classList.add("card");
+//     listItem.setAttribute("data-name", `${hero.name}`);
+//     // listItem.classList.add("list-group-item");
+//     heroesList.appendChild(listItem);
+//     listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button" class="card-button" id="hero-name" class="btn" data-toggle="modal"
+//     data-target="#exampleModal">${hero.name}</button>
+//       `;
+//   })
+//   })
+//   addButtonListener();
+// }
 
 function addButtonListener() {
   let cardButtons = document.querySelectorAll(".card-button");
@@ -302,17 +316,22 @@ function titleAnimation2() {
   htitle.style.left = "20.4rem";
   vtitle.style.left = "50.3rem";
   htitle.addEventListener("transitionend", () => {
+    getHeroesInfo();
     searchAppear();
   });
 }
 
 function searchAppear() {
-  let navSearch = document.querySelector(".nav-search");
   let navContainer = document.querySelector(".nav-container");
-  navSearch.style.display = "block";
   navContainer.style.borderBottom = "2px groove black";
-  getHeroesInfo();
+  navContainer.style.background =
+    "radial-gradient(circle, rgba(25,37,91,1) 18%, rgba(121,9,55,1) 52%, rgba(28,122,201,1) 76%)";
+  setTimeout(() => {
+    let navSearch = document.querySelector(".nav-search");
+    navSearch.style.display = "block";
+  }, 1000);
+  search();
 }
 
-startTitleAnimation();
-search();
+window.addEventListener('load', titleAnimation1());
+
