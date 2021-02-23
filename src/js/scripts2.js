@@ -5,7 +5,7 @@ let heroesList = document.querySelector(".heroes-list");
 function getHeroesInfo() {
   console.log(superHeroesList);
   superHeroesList.forEach((name) => {
-     fetch(`${apiUrl}search/${name}`)
+    fetch(`${apiUrl}search/${name}`)
       .then((response) => response.json())
       .then((data) => {
         data.results.forEach((hero) => {
@@ -313,8 +313,15 @@ function titleAnimation2() {
   htitle.style.textShadow = "2px 1px black";
   vtitle.style.color = "black";
   vtitle.style.textShadow = "2px 1px red";
-  htitle.style.left = "20.4rem";
-  vtitle.style.left = "50.3rem";
+  // larger desktop size screen
+  htitle.style.left = "43rem";
+  vtitle.style.left = "67.65rem";
+  // med-large desktop size screen
+  // htitle.style.left = "31.2rem";
+  // vtitle.style.left = "55.4rem";
+  // laptop size screen
+  // htitle.style.left = "20.4rem";
+  // vtitle.style.left = "50.3rem";
   htitle.addEventListener("transitionend", () => {
     getHeroesInfo();
     searchAppear();
@@ -333,5 +340,4 @@ function searchAppear() {
   search();
 }
 
-window.addEventListener('load', titleAnimation1());
-
+window.addEventListener("load", titleAnimation1());
