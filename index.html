@@ -19,17 +19,17 @@
 
   <body class="body">
     <nav class="nav-container">
- <div class="nav-heroes"><h3>heroes</h3></div>
+      <div class="nav-heroes"><h3>heroes</h3></div>
       <div class="nav-search">
-<form class="form-inline heroes-search">
-      <input
-        class="form-control mr-sm-2"
-        id="heroes-search"
-        type="search"
-        placeholder="Enter name to search..."
-        aria-label="Search a Hero/Villain"
-      />
-    </form>
+        <form class="form-inline heroes-search">
+          <input
+            class="form-control mr-sm-2"
+            id="heroes-search"
+            type="search"
+            placeholder="Enter name to search..."
+            aria-label="Search a Hero/Villain"
+          />
+        </form>
       </div>
       <div class="nav-villains"><h3>villains</h3></div>
     </nav>
@@ -48,41 +48,26 @@
       <div class="collapse navbar-collapse" id="navbarNav"> 
     <ul class="navbar-nav"> -->
 
-   
-    <!-- </div> -->
-
-    <!-- <li class="nav-item active">
-          <a class="nav-link" href= "https://github.com/glenvasa/">Git hub page</a>
-        </li> 
-     </ul> 
-    </div> 
-     </nav> -->
     <div class="page-container">
-      <ul class="heroes-list list-group list-unstyled" id="show-modal"></ul>
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog hidden" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"></h5>
-            </div>
-            <div class="modal-body font-weight-bold text-center">
-              <div class="modal-image-container"></div>
-            </div>
-            <div class="modal-footer"></div>
+      <ul class="heroes-list"></ul>
+      <!-- <ul class="heroes-list list-group list-unstyled" id="show-modal"></ul> -->
+      <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+      <div class="modal-dialog hidden" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
           </div>
-          <div class="powers-modal hidden"></div>
-          <div class="appearance-modal hidden"></div>
-          <div class="bio-modal hidden"></div>
-          <div class="affiliations-modal hidden"></div>
+          <div class="modal-body font-weight-bold text-center">
+            <div class="modal-image-container"></div>
+          </div>
+          <div class="modal-footer"></div>
         </div>
+        <div class="powers-modal hidden"></div>
+        <div class="appearance-modal hidden"></div>
+        <div class="bio-modal hidden"></div>
+        <div class="affiliations-modal hidden"></div>
       </div>
+      <!-- </div> -->
     </div>
 
     <script
