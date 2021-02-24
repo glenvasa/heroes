@@ -1,14 +1,14 @@
 const superHeroesList = [
-  "A-Bomb",
-  "Abe Sapien",
-  "Abin Sur",
-  "Abomination",
-  "Abraxas",
-  "Absorbing Man",
-  "Adam Monroe",
-  "Adam Strange",
-  "Agent 13",
-  "Agent Bob",
+  // "A-Bomb",
+  // "Abe Sapien",
+  // "Abin Sur",
+  // "Abomination",
+  // "Abraxas",
+  // "Absorbing Man",
+  // "Adam Monroe",
+  // "Adam Strange",
+  // "Agent 13",
+  // "Agent Bob",
   // "Agent Zero",
   // "Air-Walker",
   // "Ajax",
@@ -21,7 +21,6 @@ const superHeroesList = [
   // "Amazo",
   // "Ammo",
   // "Ando Masahashi",
-  // "Angel",
   // "Angel",
   // "Angel Dust",
   // "Angel Salvadore",
@@ -39,110 +38,102 @@ const superHeroesList = [
   // "Aquaman",
   // "Arachne",
   // "Archangel",
-  // 41	Arclight
-  // 42	Ardina
-  // 43	Ares
-  // 44	Ariel
-  // 45	Armor
-  // 46	Arsenal
-  // 47	Astro Boy
-  // 48	Atlas
-  // 49	Atlas
-  // 50	Atom
-  // 51	Atom
-  // 52	Atom Girl
-  // 53	Atom II
-  // 54	Atom III
-  // 55	Atom IV
-  // 56	Aurora
-  // 57	Azazel
-  // 58	Azrael
-  // 59	Aztar
-  // 60	Bane
-  // 61	Banshee
-  // 62	Bantam
-  // 63	Batgirl
-  // 64	Batgirl
-  // 65	Batgirl III
-  // 66	Batgirl IV
-  // 67	Batgirl V
-  // 68	Batgirl VI
-  // 69	Batman
-  // 70	Batman
-  // 71	Batman II
-  // 72	Battlestar
-  // 73	Batwoman V
-  // 74	Beak
-  // 75	Beast
-  // 76	Beast Boy
-  // 77	Beetle
-  // 78	Ben 10
-  // 79	Beta Ray Bill
-  // 80	Beyonder
-  // 81	Big Barda
-  // 82	Big Daddy
-  // 83	Big Man
-  // 84	Bill Harken
-  // 85	Billy Kincaid
-  // 86	Binary
-  // 87	Bionic Woman
-  // 88	Bird-Brain
-  // 89	Bird-Man
-  // 90	Bird-Man II
-  // 91	Birdman
-  // 92	Bishop
-  // 93	Bizarro
-  // 94	Black Abbott
-  // 95	Black Adam
-  // 96	Black Bolt
-  // 97	Black Canary
-  // 98	Black Canary
-  // 99	Black Cat
-  // 100	Black Flash
-  // 101	Black Goliath
-  // 102	Black Knight III
-  // 103	Black Lightning
-  // 104	Black Mamba
-  // 105	Black Manta
-  // 106	Black Panther
-  // 107	Black Widow
-  // 108	Black Widow II
-  // 109	Blackout
-  // 110	Blackwing
-  // 111	Blackwulf
-  // 112	Blade
-  // 113	Blaquesmith
-  // 114	Bling!
-  // 115	Blink
-  // 116	Blizzard
-  // 117	Blizzard
-  // 118	Blizzard II
-  // 119	Blob
-  // 120	Bloodaxe
-  // 121	Bloodhawk
-  // 122	Bloodwraith
-  // 123	Blue Beetle
-  // 124	Blue Beetle
-  // 125	Blue Beetle II
-  // 126	Blue Beetle III
-  // 127	Boba Fett
-  // 128	Bolt
-  // 129	Bomb Queen
-  // 130	Boom-Boom
-  // 131	Boomer
-  // 132	Booster Gold
-  // 133	Box
-  // 134	Box III
-  // 135	Box IV
-  // 136	Brainiac
-  // 137	Brainiac 5
-  // 138	Brother Voodoo
-  // 139	Brundlefly
-  // 140	Buffy
-  // 141	Bullseye
-  // 142	Bumblebee
-  // 143	Bumbleboy
-  // 144	Bushido
+  // "Arclight",
+  // "Ardina",
+  // "Ares",
+  // "Ariel",
+  // "Armor",
+  // "Arsenal",
+  // "Astro Boy",
+  // "Atlas",
+  // "Atom",
+  // "Atom Girl",
+  // "Atom II",
+  // "Atom III",
+  // "Atom IV",
+  // "Aurora",
+  // "Azazel",
+  // "Aztar",
+  "Bane",
+  "Banshee",
+  "Bantam",
+  "Batgirl",
+  "Batgirl III",
+  "Batgirl IV",
+  "Batgirl V",
+  "Batgirl VI",
+  // "Batman",
+  // "Batman II",
+  // "Battlestar",
+  // "Batwoman V",
+  // "Beak",
+  // "Beast",
+  // "Beast Boy",
+  // "Beetle",
+  // "Ben 10",
+  // "Beta Ray Bill",
+  // "Beyonder",
+  // "Big Barda",
+  // "Big Daddy",
+  // "Big Man",
+  // "Bill Harken",
+  // "Billy Kincaid",
+  // "Binary",
+  "Bionic Woman",
+  "Bird-Brain",
+  "Bird-Man",
+  "Bird-Man II",
+  "Birdman",
+  "Bishop",
+  "Bizarro",
+  // "Black Abbott",
+  // "Black Adam",
+  // "Black Bolt",
+  // "Black Canary",
+  // "Black Cat",
+  // "Black Flash",
+  // "Black Goliath",
+  // "Black Knight III",
+  // "Black Lightning",
+  // "Black Mamba",
+  // "Black Manta",
+  // "Black Panther",
+  // "Black Widow",
+  // "Black Widow II",
+  // "Blackout",
+  // "Blackwing",
+  // "Blackwulf",
+  // "Blade",
+  // "Blaquesmith",
+  // "Bling!",
+  // "Blink",
+  // "Blizzard",
+  // "Blizzard II",
+  // "Blob",
+  // "Bloodaxe",
+  // "Bloodhawk",
+  // "Bloodwraith",
+  // "Blue Beetle",
+  // "Blue Beetle II",
+  // "Blue Beetle III",
+  // "Boba Fett",
+  // "Bolt",
+  // "Bomb Queen",
+  // "Boom-Boom",
+  // "Boomer",
+  // "Booster Gold",
+  // "Box",
+  // "Box III",
+  // "Box IV",
+  // "Brainiac",
+  // "Brainiac 5",
+  // "Brother Voodoo",
+  // "Brundlefly",
+  // "Buffy",
+  // "Bullseye",
+  // "Bumblebee",
+  // "Bumbleboy",
+  // "Bushido",
   // 145	Cable
   // 146	Callisto
   // 147	Cameron Hicks
@@ -713,13 +704,13 @@ const superHeroesList = [
   // 710	Weapon XI
   // 711	White Canary
   // 712	White Queen
-  // 713	Wildfire
-  // 714	Winter Soldier
-  // 715	Wiz Kid
-  // 716	Wolfsbane
-  // 717	Wolverine
-  // 718	"Wonder Girl"
-  // 719	"Wonder Man"
+  // "Wildfire",
+  // "Winter Soldier",
+  // "Wiz Kid",
+  // "Wolfsbane",
+  // "Wolverine",
+  // "Wonder Girl",
+  // "Wonder Man",
   // "Wonder Woman",
   // "Wondra",
   // "Wyatt Wingfoot",
