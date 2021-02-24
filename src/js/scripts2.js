@@ -10,20 +10,33 @@ function getHeroesInfo() {
       .then((data) => {
         data.results.forEach((hero) => {
           heroTeam.push(hero);
+          localStorage.setItem(`${name}`, JSON.stringify(hero));
           addListItem(hero);
         });
       });
   });
 }
 
+// function getHeroesInfo() {
+//   for (i = 1; i < 20; i++) {
+//     fetch(`https://superheroapi.com/api/114585350670601/${i}`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log(data);
+//         heroTeam.push(data);
+//       });
+//   }
+//   console.log(hero)
+//   addListItem();
+// }
+
 function addListItem(hero) {
   let listItem = document.createElement("li");
   listItem.classList.add("card");
   listItem.setAttribute("data-name", `${hero.name}`);
   heroesList.appendChild(listItem);
-  listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button" class="card-button" id="hero-name" class="btn" data-toggle="modal"
-  data-target="#exampleModal">${hero.name}</button>
-    `;
+  listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button" class="card-button" 
+  id="hero-name" class="btn">${hero.name}</button>`;
   addButtonListener();
 }
 
@@ -58,15 +71,22 @@ function addButtonListener() {
   });
 }
 
+// function showDetails(name) {
+//   //   console.log(name);
+//   fetch(`${apiUrl}search/${name}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       data.results.forEach((hero) => {
+//         showModal(hero);
+//       });
+//     });
+// }
+
 function showDetails(name) {
-  //   console.log(name);
-  fetch(`${apiUrl}search/${name}`)
-    .then((response) => response.json())
-    .then((data) => {
-      data.results.forEach((hero) => {
-        showModal(hero);
-      });
-    });
+  console.log(name);
+  let hero = JSON.parse(localStorage.getItem(name));
+  console.log(hero);
+  showModal(hero);
 }
 
 function showModal(hero) {
