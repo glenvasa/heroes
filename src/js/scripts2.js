@@ -35,8 +35,18 @@ function addListItem(hero) {
   listItem.classList.add("card");
   listItem.setAttribute("data-name", `${hero.name}`);
   heroesList.appendChild(listItem);
-  listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button" class="card-button" 
-  id="hero-name" class="btn">${hero.name}</button>`;
+  listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button"  
+  id="hero-name" class="btn card-button hero-name">${hero.name}</button>`;
+
+  // let heroName = document.querySelector(".hero-name");
+
+  // if (hero.biography.alignment === "bad") {
+  //   heroName.style.color = "black";
+  //   heroName.style.textShadow = "2px 1px red";
+  // } else {
+  //   heroName.style.color = "red";
+  //   heroName.style.textShadow = "2px 1px black";
+  // }
   addButtonListener();
 }
 
@@ -66,7 +76,7 @@ function addButtonListener() {
   cardButtons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       let name = e.target.innerText;
-      showDetails(name);
+      getDetails(name);
     });
   });
 }
@@ -82,18 +92,18 @@ function addButtonListener() {
 //     });
 // }
 
-function showDetails(name) {
-  console.log(name);
+function getDetails(name) {
   let hero = JSON.parse(localStorage.getItem(name));
   console.log(hero);
   showModal(hero);
 }
 
 function showModal(hero) {
+  heroesList.style.display = "none";
   let modal = document.querySelector(".modal-dialog");
   modal.classList.remove("hidden");
   let body = document.querySelector(".body");
-  body.classList.add("overlay");
+  // body.classList.add("overlay");
   //   let overlay = document.querySelector(".overlay");
   //   overlay.addEventListener("click", hideModal);
   let modalBody = document.querySelector(".modal-body");
@@ -109,24 +119,47 @@ function showModal(hero) {
   //   closeButton.innerHTML = `<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="hideModal()"><span aria-hidden="true">&times;</span></button>`;
   //   modal.appendChild(closeButton);
   modalImageContainer.innerHTML = `<img class="modal-image" src="${hero.image.url}"/>`;
-  modalFooter.innerHTML = `<button type="button" onclick="showPowers()" class="powers-button btn btn-secondary ">Powers</button><button type="button" onclick="showAppearance()" class="appearance-button btn btn-secondary ">Appearance</button> <button type="button" onclick="showBio()" class="bio-button btn btn-secondary ">Bio</button><button type="button" onclick="showAffiliations()" class="affiliations-button btn btn-secondary ">Work</button><button type="button" class="btn btn-secondary"
+  modalFooter.innerHTML = `<button type="button" onclick="showPowers()" class="powers-button btn btn-secondary ">Powers</button><button type="button" onclick="showAppearance()" class="appearance-button btn btn-secondary ">Appearance</button> <button type="button" onclick="showBio()" class="bio-button btn btn-secondary ">Bio</button><button type="button" onclick="showAffiliations()" class="affiliations-button btn btn-secondary ">Work</button><button type="button" class="btn btn-secondary close-modal"
   onclick="hideModal()">Close</button>`;
+
   localStorage.setItem("hero", JSON.stringify(hero));
+  let modalTitle = document.querySelector(".modal-title");
+
+  if (hero.biography.alignment === "bad") {
+    modalTitle.style.color = "black";
+    modalTitle.style.textShadow = "2px 1px red";
+  } else {
+    modalHeader.style.color = "red";
+    modalHeader.style.textShadow = "2px 1px black";
+  }
 }
 
 function hideModal() {
+  let powersModal = document.querySelector(".powers-modal");
+  let appearanceModal = document.querySelector(".appearance-modal");
+  let bioModal = document.querySelector(".bio-modal");
+  let affiliationsModal = document.querySelector(".affiliations-modal");
   let modal = document.querySelector(".modal-dialog");
   modal.classList.add("hidden");
-  let body = document.querySelector(".body");
-  body.classList.remove("overlay");
-  localStorage.clear();
+  heroesList.style.display = "";
+  appearanceModal.style.display = "none";
+  bioModal.style.display = "none";
+  powersModal.style.display = "none";
+  affiliationsModal.style.display = "none";
+
+  // let body = document.querySelector(".body");
+  // body.classList.remove("overlay");
+
+  // localStorage.clear();
 }
 
 function showPowers() {
+  let powersModal = document.querySelector(".powers-modal");
+  powersModal.style.display = "";
   document.querySelector(".powers-button").disabled = true;
 
   let powersArray = [];
-  let powersModal = document.querySelector(".powers-modal");
+
   // powersModal.setAttribute("onclick", "console.log('hello')");
   powersModal.classList.remove("hidden");
   let powersTitle = document.createElement("h2");
@@ -145,9 +178,9 @@ function showPowers() {
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  closeModalButton.classList.add("close-modal");
-  closeModalButton.setAttribute("onclick", "closePowersModal()");
+  // closeModalButton.classList.add("close-modal");
   powersModal.appendChild(closeModalButton);
+  closeModalButton.setAttribute("onclick", "closePowersModal()");
 
   // powersList.appendChild(newPowersArray);
 }
@@ -160,10 +193,12 @@ function closePowersModal() {
 }
 
 function showAppearance() {
+  let appearanceModal = document.querySelector(".appearance-modal");
+  appearanceModal.style.display = "";
   document.querySelector(".appearance-button").disabled = true;
 
   let appearanceArray = [];
-  let appearanceModal = document.querySelector(".appearance-modal");
+
   // powersModal.setAttribute("onclick", "console.log('hello')");
   appearanceModal.classList.remove("hidden");
   let appearanceTitle = document.createElement("h2");
@@ -182,7 +217,7 @@ function showAppearance() {
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  closeModalButton.classList.add("close-modal");
+  // closeModalButton.classList.add("close-modal");
   closeModalButton.setAttribute("onclick", "closeAppearanceModal()");
   appearanceModal.appendChild(closeModalButton);
 }
@@ -195,11 +230,12 @@ function closeAppearanceModal() {
 }
 
 function showBio() {
+  let bioModal = document.querySelector(".bio-modal");
+  bioModal.style.display = "";
   document.querySelector(".bio-button").disabled = true;
 
   let bioArray = [];
-  let bioModal = document.querySelector(".bio-modal");
-  // powersModal.setAttribute("onclick", "console.log('hello')");
+
   bioModal.classList.remove("hidden");
   let bioTitle = document.createElement("h2");
   bioTitle.innerText = "Biography";
@@ -217,7 +253,7 @@ function showBio() {
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  closeModalButton.classList.add("close-modal");
+  // closeModalButton.classList.add("close-modal");
   closeModalButton.setAttribute("onclick", "closeBioModal()");
   bioModal.appendChild(closeModalButton);
 }
@@ -230,10 +266,12 @@ function closeBioModal() {
 }
 
 function showAffiliations() {
+  let affiliationsModal = document.querySelector(".affiliations-modal");
+  affiliationsModal.style.display = "";
   document.querySelector(".affiliations-button").disabled = true;
 
   let affiliationsArray = [];
-  let affiliationsModal = document.querySelector(".affiliations-modal");
+
   // powersModal.setAttribute("onclick", "console.log('hello')");
   affiliationsModal.classList.remove("hidden");
   let affiliationsTitle = document.createElement("h2");
@@ -252,7 +290,7 @@ function showAffiliations() {
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  closeModalButton.classList.add("close-modal");
+  // closeModalButton.classList.add("close-modal");
   closeModalButton.setAttribute("onclick", "closeAffiliationsModal()");
   affiliationsModal.appendChild(closeModalButton);
 }
