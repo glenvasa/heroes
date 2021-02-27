@@ -4,5 +4,5 @@ Web application built with HTML, CSS, and Javascript that loads character data f
 
 ##Screenshots
 <img src="public/main2.png" width="650" height="650">  
-<img src="public/hero-modal.png" width="650" height="650"> <img src="public/hero-submodals.png" width="650" height="650">
+<img src="public/hero-modal.png" width="650" height="650"> <img src="public/hero-submodals.png" width="800" height="650">
 <img src="public/villain-modal.png" width="650" height="650"><img src="public/villain-submodals.png" width="650" height="650">  
