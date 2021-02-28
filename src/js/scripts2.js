@@ -86,7 +86,7 @@ function showModal(hero) {
   heroesList.style.display = "none";
   let modal = document.querySelector(".modal-dialog");
   modal.classList.remove("hidden");
-  let body = document.querySelector(".body");
+  // let body = document.querySelector(".body");
   // body.classList.add("overlay");
   //   let overlay = document.querySelector(".overlay");
   //   overlay.addEventListener("click", hideModal);
@@ -125,11 +125,17 @@ function hideModal() {
   let affiliationsModal = document.querySelector(".affiliations-modal");
   let modal = document.querySelector(".modal-dialog");
   modal.classList.add("hidden");
-  heroesList.style.display = "";
+  
+  // appearanceModal.empty();
+  // bioModal.empty()
+  // powersModal.empty()
+  // affiliationsModal.empty()
+  
   appearanceModal.style.display = "none";
   bioModal.style.display = "none";
   powersModal.style.display = "none";
   affiliationsModal.style.display = "none";
+  heroesList.style.display = "";
 
   // let body = document.querySelector(".body");
   // body.classList.remove("overlay");
