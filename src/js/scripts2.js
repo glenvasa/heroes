@@ -13,6 +13,9 @@ function getHeroesInfo() {
           localStorage.setItem(`${name}`, JSON.stringify(hero));
           addListItem(hero);
         });
+      })
+      .catch((error) => {
+        console.log(error);
       });
   });
 }
@@ -38,15 +41,6 @@ function addListItem(hero) {
   listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button"  
   id="hero-name" class="btn card-button hero-name">${hero.name}</button>`;
 
-  // let heroName = document.querySelector(".hero-name");
-
-  // if (hero.biography.alignment === "bad") {
-  //   heroName.style.color = "black";
-  //   heroName.style.textShadow = "2px 1px red";
-  // } else {
-  //   heroName.style.color = "red";
-  //   heroName.style.textShadow = "2px 1px black";
-  // }
   addButtonListener();
 }
 
@@ -81,16 +75,6 @@ function addButtonListener() {
   });
 }
 
-// function showDetails(name) {
-//   //   console.log(name);
-//   fetch(`${apiUrl}search/${name}`)
-//     .then((response) => response.json())
-//     .then((data) => {
-//       data.results.forEach((hero) => {
-//         showModal(hero);
-//       });
-//     });
-// }
 
 function getDetails(name) {
   let hero = JSON.parse(localStorage.getItem(name));
@@ -308,7 +292,59 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
-// window.addEventListener("load", getHeroesInfo());
+function titleAnimation1() {
+  let htitle = document.querySelector(".nav-heroes");
+  let vtitle = document.querySelector(".nav-villains");
+  vtitle.addEventListener("transitionend", () => {
+    titleAnimation2();
+  });
+  htitle.style.left = "544px";
+  vtitle.style.left = "624px";
+}
+
+function titleAnimation2() {
+  let htitle = document.querySelector(".nav-heroes");
+  let vtitle = document.querySelector(".nav-villains");
+  htitle.style.transition = "all 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
+  vtitle.style.transition = "all 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
+  htitle.style.color = "red";
+  htitle.style.textShadow = "2px 1px black";
+  vtitle.style.color = "black";
+  vtitle.style.textShadow = "2px 1px red";
+
+  let width = window.innerWidth;
+
+  console.log(htitle.getBoundingClientRect()); // htitle width = 119.53px
+  console.log(vtitle.getBoundingClientRect()); // vtitle width = 129.70px
+  // searchbar width = 122.22 px
+
+  // htitle ending position calculation
+  // 1/2 window width - 1/2 search bar width
+  // - spacing between htitle and searchbar - title width
+  htitle.style.left = width / 2 - 61 - 80 - 127.53 + "px";
+
+  // vtitle ending position calculation
+  // 1/2 window width + 1/2 search bar width
+  // + spacing between searchbar and vtitle
+  vtitle.style.left = width / 2 + 61 + 60 + "px";
+
+  htitle.addEventListener("transitionend", () => {
+    getHeroesInfo();
+    searchAppear();
+  });
+}
+
+function searchAppear() {
+  let navContainer = document.querySelector(".nav-container");
+  navContainer.style.borderBottom = "2px groove black";
+  navContainer.style.background =
+    "radial-gradient(circle, rgba(25,37,91,1) 18%, rgba(121,9,55,1) 52%, rgba(28,122,201,1) 76%)";
+  setTimeout(() => {
+    let navSearch = document.querySelector(".nav-search");
+    navSearch.style.display = "block";
+  }, 1000);
+  search();
+}
 
 function search() {
   let nav = document.querySelector(".heroes-search");
@@ -329,73 +365,17 @@ function search() {
           li[i].style.display = "none";
         }
       }
-
-      // value = this.value.toLowerCase();
-      // let heroesList = document.querySelector(".heroes-list");
-      // let listGroup = document.querySelectorAll(".list-group-item");
-      // let listItems = Array.from(listGroup);
-      // listItems.filter(function () {
-      //   console.log(this);
-      // this.ontoggle(this.innerText.toLowerCase().indexOf(value) > -1);
-      // });
     });
   });
 }
 
-function startTitleAnimation() {
-  let htitle = document.querySelector(".nav-heroes");
-  htitle.addEventListener("click", () => {
-    titleAnimation1();
-  });
-}
-
-function titleAnimation1() {
-  let htitle = document.querySelector(".nav-heroes");
+window.addEventListener("load", () => {
   let vtitle = document.querySelector(".nav-villains");
-  vtitle.addEventListener("transitionend", () => {
-    titleAnimation2();
-  });
-  // htitle.removeEventListener("click", () => {
-  //   titleAnimation1();
-  // });
-  htitle.style.left = "34rem";
-  vtitle.style.left = "39rem";
-}
-
-function titleAnimation2() {
-  let htitle = document.querySelector(".nav-heroes");
-  let vtitle = document.querySelector(".nav-villains");
-  htitle.style.transition = "all 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
-  vtitle.style.transition = "all 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
-  htitle.style.color = "red";
-  htitle.style.textShadow = "2px 1px black";
-  vtitle.style.color = "black";
-  vtitle.style.textShadow = "2px 1px red";
-  // larger desktop size screen
-  htitle.style.left = "43rem";
-  vtitle.style.left = "67.65rem";
-  // med-large desktop size screen
-  // htitle.style.left = "31.2rem";
-  // vtitle.style.left = "55.4rem";
-  // laptop size screen
-  // htitle.style.left = "20.4rem";
-  // vtitle.style.left = "50.3rem";
-  htitle.addEventListener("transitionend", () => {
-    getHeroesInfo();
-    searchAppear();
-  });
-}
-
-function searchAppear() {
-  let navContainer = document.querySelector(".nav-container");
-  navContainer.style.borderBottom = "2px groove black";
-  navContainer.style.background =
-    "radial-gradient(circle, rgba(25,37,91,1) 18%, rgba(121,9,55,1) 52%, rgba(28,122,201,1) 76%)";
-  setTimeout(() => {
-    let navSearch = document.querySelector(".nav-search");
-    navSearch.style.display = "block";
-  }, 1000);
-  search();
-}
-
-window.addEventListener("load", titleAnimation1());
+  let width = window.innerWidth;
+  // set Villain title start position at width of screen - width of title - 8px
+  vtitle.style.left = width - 129.7 - 10 + "px";
+setTimeout (() => {
+  titleAnimation1();
+}, 500)
+  
+});
