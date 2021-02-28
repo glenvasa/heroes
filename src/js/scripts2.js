@@ -321,7 +321,7 @@ function titleAnimation2() {
   // htitle ending position calculation
   // 1/2 window width - 1/2 search bar width
   // - spacing between htitle and searchbar - title width
-  htitle.style.left = width / 2 - 61 - 80 - 127.53 + "px";
+  htitle.style.left = width / 2 - 61 - 83 - 127.53 + "px";
 
   // vtitle ending position calculation
   // 1/2 window width + 1/2 search bar width
@@ -369,7 +369,7 @@ function search() {
   });
 }
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   let vtitle = document.querySelector(".nav-villains");
   let width = window.innerWidth;
   // set Villain title start position at width of screen - width of title - 8px
