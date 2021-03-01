@@ -186,7 +186,8 @@ body {
   left: 5%;
   bottom: 5%;
   right: 5%;
-  /* box-shadow: 5px 3px 10px black; */
+  /* box-shadow: 3px 3px 3px 10px red; */
+  /* z-index: 1000; */
 }
 
 .modal-header {
