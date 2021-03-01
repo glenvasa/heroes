@@ -21,6 +21,36 @@ let heroesList = document.querySelector(".heroes-list");
 //   });
 // }
 
+// code that creates array of only character names (removes table cells that are id numbers) 
+// on https://superheroapi.com/ids.html when run from console
+
+// const cells = document.querySelectorAll('.container-fluid td'); 
+// let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]; 
+// const names = Array.from(cells) 
+//               .map(cell => cell.innerText)
+//               .filter(name => !numbers.some(num => name.includes(num)))
+// console.log(names)
+
+
+
+// function getHeroesInfo() {
+//   console.log(superHeroesList);
+//   superHeroesList.forEach((name) => {
+//     fetch(`${apiUrl}search/${name}`)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         data.results.forEach((hero) => {
+//           heroTeam.push(hero);
+//           localStorage.setItem(`${name}`, JSON.stringify(hero));
+//           addListItem(hero);
+//         });
+//       })
+//       .catch((error) => {
+//         console.log(error);
+//       });
+//   });
+// }
+
 function getHeroesInfo() {
   for (i = 1; i < 40; i++) {
     fetch(`${apiUrl}/${i}.json`)
