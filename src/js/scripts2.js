@@ -1,44 +1,47 @@
 let heroTeam = [];
-let apiUrl = "https://superheroapi.com/api/114585350670601/";
+// let apiUrl = "https://superheroapi.com/api/114585350670601/";
+let apiUrl = "https://akabab.github.io/superhero-api/api/id";
 let heroesList = document.querySelector(".heroes-list");
 
-function getHeroesInfo() {
-  console.log(superHeroesList);
-  superHeroesList.forEach((name) => {
-    fetch(`${apiUrl}search/${name}`)
-      .then((response) => response.json())
-      .then((data) => {
-        data.results.forEach((hero) => {
-          heroTeam.push(hero);
-          localStorage.setItem(`${name}`, JSON.stringify(hero));
-          addListItem(hero);
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
-}
-
 // function getHeroesInfo() {
-//   for (i = 1; i < 20; i++) {
-//     fetch(`https://superheroapi.com/api/114585350670601/${i}`)
+//   console.log(superHeroesList);
+//   superHeroesList.forEach((name) => {
+//     fetch(`${apiUrl}search/${name}`)
 //       .then((response) => response.json())
 //       .then((data) => {
-//         console.log(data);
-//         heroTeam.push(data);
+//         data.results.forEach((hero) => {
+//           heroTeam.push(hero);
+//           localStorage.setItem(`${name}`, JSON.stringify(hero));
+//           addListItem(hero);
+//         });
+//       })
+//       .catch((error) => {
+//         console.log(error);
 //       });
-//   }
-//   console.log(hero)
-//   addListItem();
+//   });
 // }
+
+function getHeroesInfo() {
+  for (i = 1; i < 40; i++) {
+    fetch(`${apiUrl}/${i}.json`)
+      .then((response) => response.json())
+      .then((hero) => {
+        localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
+        addListItem(hero);
+      });
+
+    // .catch((error) => {
+    //   console.log(error);
+    // });
+  }
+}
 
 function addListItem(hero) {
   let listItem = document.createElement("li");
   listItem.classList.add("card");
   listItem.setAttribute("data-name", `${hero.name}`);
   heroesList.appendChild(listItem);
-  listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button"  
+  listItem.innerHTML = `<img class="card-image" src="${hero.images.md}"><button type="button"  
   id="hero-name" class="btn card-button hero-name">${hero.name}</button>`;
 
   addButtonListener();
@@ -75,7 +78,6 @@ function addButtonListener() {
   });
 }
 
-
 function getDetails(name) {
   let hero = JSON.parse(localStorage.getItem(name));
   console.log(hero);
@@ -102,7 +104,7 @@ function showModal(hero) {
   //   let closeButton = document.createElement("button");
   //   closeButton.innerHTML = `<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="hideModal()"><span aria-hidden="true">&times;</span></button>`;
   //   modal.appendChild(closeButton);
-  modalImageContainer.innerHTML = `<img class="modal-image" src="${hero.image.url}"/>`;
+  modalImageContainer.innerHTML = `<img class="modal-image" src="${hero.images.md}"/>`;
   modalFooter.innerHTML = `<button type="button" onclick="showPowers()" class="powers-button btn btn-secondary ">Powers</button><button type="button" onclick="showAppearance()" class="appearance-button btn btn-secondary ">Appearance</button> <button type="button" onclick="showBio()" class="bio-button btn btn-secondary ">Bio</button><button type="button" onclick="showAffiliations()" class="affiliations-button btn btn-secondary ">Work</button><button type="button" class="btn btn-secondary close-modal"
   onclick="hideModal()">Close</button>`;
 
@@ -125,16 +127,17 @@ function hideModal() {
   let affiliationsModal = document.querySelector(".affiliations-modal");
   let modal = document.querySelector(".modal-dialog");
   modal.classList.add("hidden");
-  
-  // appearanceModal.empty();
-  // bioModal.empty()
-  // powersModal.empty()
-  // affiliationsModal.empty()
-  
+
+  appearanceModal.innerHTML = "";
+  bioModal.innerHTML = "";
+  powersModal.innerHTML = "";
+  affiliationsModal.innerHTML = "";
+
   appearanceModal.style.display = "none";
   bioModal.style.display = "none";
   powersModal.style.display = "none";
   affiliationsModal.style.display = "none";
+
   heroesList.style.display = "";
 
   // let body = document.querySelector(".body");
@@ -380,8 +383,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let width = window.innerWidth;
   // set Villain title start position at width of screen - width of title - 8px
   vtitle.style.left = width - 129.7 - 10 + "px";
-setTimeout (() => {
-  titleAnimation1();
-}, 500)
-  
+  setTimeout(() => {
+    titleAnimation1();
+  }, 500);
 });
