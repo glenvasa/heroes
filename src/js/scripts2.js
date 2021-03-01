@@ -21,17 +21,15 @@ let heroesList = document.querySelector(".heroes-list");
 //   });
 // }
 
-// code that creates array of only character names (removes table cells that are id numbers) 
+// code that creates array of only character names (removes table cells that are id numbers)
 // on https://superheroapi.com/ids.html when run from console
 
-// const cells = document.querySelectorAll('.container-fluid td'); 
-// let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]; 
-// const names = Array.from(cells) 
+// const cells = document.querySelectorAll('.container-fluid td');
+// let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+// const names = Array.from(cells)
 //               .map(cell => cell.innerText)
 //               .filter(name => !numbers.some(num => name.includes(num)))
 // console.log(names)
-
-
 
 // function getHeroesInfo() {
 //   console.log(superHeroesList);
@@ -52,7 +50,7 @@ let heroesList = document.querySelector(".heroes-list");
 // }
 
 function getHeroesInfo() {
-  for (i = 1; i < 40; i++) {
+  for (i = 1; i < 100; i++) {
     fetch(`${apiUrl}/${i}.json`)
       .then((response) => response.json())
       .then((hero) => {
@@ -110,7 +108,7 @@ function addButtonListener() {
 
 function getDetails(name) {
   let hero = JSON.parse(localStorage.getItem(name));
-  console.log(hero);
+  // console.log(hero);
   showModal(hero);
 }
 
@@ -127,16 +125,15 @@ function showModal(hero) {
   let modalHeader = document.querySelector(".modal-header");
   let modalFooter = document.querySelector(".modal-footer");
 
-  //   modalTitle.empty();
-  //   modalBody.empty();
-
   modalHeader.innerHTML = `<h1 class="modal-title">${hero.name}</h1>`;
   //   let closeButton = document.createElement("button");
   //   closeButton.innerHTML = `<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="hideModal()"><span aria-hidden="true">&times;</span></button>`;
   //   modal.appendChild(closeButton);
   modalImageContainer.innerHTML = `<img class="modal-image" src="${hero.images.md}"/>`;
-  modalFooter.innerHTML = `<button type="button" onclick="showPowers()" class="powers-button btn btn-secondary ">Powers</button><button type="button" onclick="showAppearance()" class="appearance-button btn btn-secondary ">Appearance</button> <button type="button" onclick="showBio()" class="bio-button btn btn-secondary ">Bio</button><button type="button" onclick="showAffiliations()" class="affiliations-button btn btn-secondary ">Work</button><button type="button" class="btn btn-secondary close-modal"
-  onclick="hideModal()">Close</button>`;
+  modalFooter.innerHTML = `<button type="button" onclick="showPowers()" class="powers-button btn btn-secondary ">Powers</button>
+  <button type="button" onclick="showAppearance()" class="appearance-button btn btn-secondary ">Appearance</button> 
+  <button type="button" onclick="showBio()" class="bio-button btn btn-secondary ">Bio</button><button type="button" onclick="showwork()" class="work-button btn btn-secondary ">Work</button>
+  <button type="button" onclick="showAffiliations()" class="affiliations-button btn btn-secondary ">Connections</button><button type="button" class="btn btn-secondary close-modal" onclick="hideModal()">Close</button>`;
 
   localStorage.setItem("hero", JSON.stringify(hero));
   let modalTitle = document.querySelector(".modal-title");
@@ -154,6 +151,7 @@ function hideModal() {
   let powersModal = document.querySelector(".powers-modal");
   let appearanceModal = document.querySelector(".appearance-modal");
   let bioModal = document.querySelector(".bio-modal");
+  let workModal = document.querySelector(".work-modal");
   let affiliationsModal = document.querySelector(".affiliations-modal");
   let modal = document.querySelector(".modal-dialog");
   modal.classList.add("hidden");
@@ -161,14 +159,14 @@ function hideModal() {
   appearanceModal.innerHTML = "";
   bioModal.innerHTML = "";
   powersModal.innerHTML = "";
+  workModal.innerHTML = "";
   affiliationsModal.innerHTML = "";
 
-  appearanceModal.style.display = "none";
-  bioModal.style.display = "none";
-  powersModal.style.display = "none";
-  affiliationsModal.style.display = "none";
-
-  heroesList.style.display = "";
+  heroesList.style.display = "grid";
+  // appearanceModal.style.display = "none";
+  // bioModal.style.display = "none";
+  // powersModal.style.display = "none";
+  // workModal.style.display = "none";
 
   // let body = document.querySelector(".body");
   // body.classList.remove("overlay");
@@ -191,11 +189,11 @@ function showPowers() {
   let powersList = document.createElement("ul");
   powersModal.appendChild(powersList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  console.log(character.powerstats);
+  // console.log(character.powerstats);
   for (const [key, value] of Object.entries(character.powerstats)) {
-    let power = `<li>${key}: ${value}</li>`;
+    let power = `<li class="powersModalListItem">${key}: ${value}</li>`;
     powersArray.push(power);
-    console.log(powersArray);
+    // console.log(powersArray);
   }
   powersList.innerHTML = powersArray.join(" ");
 
@@ -230,11 +228,11 @@ function showAppearance() {
   let appearanceList = document.createElement("ul");
   appearanceModal.appendChild(appearanceList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  console.log(character.appearance);
+  // console.log(character.appearance);
   for (const [key, value] of Object.entries(character.appearance)) {
-    let appearance = `<li>${key}: ${value}</li>`;
+    let appearance = `<li class="appearanceModalListItem">${key}: ${value}</li>`;
     appearanceArray.push(appearance);
-    console.log(appearanceArray);
+    // console.log(appearanceArray);
   }
   appearanceList.innerHTML = appearanceArray.join(" ");
 
@@ -266,11 +264,11 @@ function showBio() {
   let bioList = document.createElement("ul");
   bioModal.appendChild(bioList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  console.log(character.biography);
+  // console.log(character.biography);
   for (const [key, value] of Object.entries(character.biography)) {
-    let bio = `<li>${key}: ${value}</li>`;
+    let bio = `<li class="bioModalListItem">${key}: ${value}</li>`;
     bioArray.push(bio);
-    console.log(bioArray);
+    // console.log(bioArray);
   }
   bioList.innerHTML = bioArray.join(" ");
 
@@ -288,6 +286,43 @@ function closeBioModal() {
   document.querySelector(".bio-button").disabled = false;
 }
 
+function showwork() {
+  let workModal = document.querySelector(".work-modal");
+  workModal.style.display = "";
+  document.querySelector(".work-button").disabled = true;
+
+  let workArray = [];
+
+  // powersModal.setAttribute("onclick", "console.log('hello')");
+  workModal.classList.remove("hidden");
+  let workTitle = document.createElement("h2");
+  workTitle.innerText = "Work";
+  workModal.appendChild(workTitle);
+  let workList = document.createElement("ul");
+  workModal.appendChild(workList);
+  let character = JSON.parse(localStorage.getItem("hero"));
+  // console.log(character.work);
+  for (const [key, value] of Object.entries(character.work)) {
+    let work = `<li class="workModalListItem">${key}: ${value}</li>`;
+    workArray.push(work);
+    // console.log(workArray);
+  }
+  workList.innerHTML = workArray.join(" ");
+
+  let closeModalButton = document.createElement("button");
+  closeModalButton.innerHTML = `<span>&times;</span>`;
+  // closeModalButton.classList.add("close-modal");
+  closeModalButton.setAttribute("onclick", "closeWorkModal()");
+  workModal.appendChild(closeModalButton);
+}
+
+function closeWorkModal() {
+  console.log("clicked close work modal");
+  let workModal = document.querySelector(".work-modal");
+  workModal.classList.add("hidden");
+  document.querySelector(".work-button").disabled = false;
+}
+
 function showAffiliations() {
   let affiliationsModal = document.querySelector(".affiliations-modal");
   affiliationsModal.style.display = "";
@@ -295,31 +330,33 @@ function showAffiliations() {
 
   let affiliationsArray = [];
 
-  // powersModal.setAttribute("onclick", "console.log('hello')");
+  // affiliationsModal.setAttribute("onclick", "console.log('hello')");
   affiliationsModal.classList.remove("hidden");
   let affiliationsTitle = document.createElement("h2");
-  affiliationsTitle.innerText = "Work";
+  affiliationsTitle.innerText = "Connections";
   affiliationsModal.appendChild(affiliationsTitle);
   let affiliationsList = document.createElement("ul");
   affiliationsModal.appendChild(affiliationsList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  console.log(character.work);
-  for (const [key, value] of Object.entries(character.work)) {
-    let affiliation = `<li>${key}: ${value}</li>`;
+  // console.log(character.affiliationstats);
+  for (const [key, value] of Object.entries(character.connections)) {
+    let affiliation = `<li class="affiliationsModalListItem">${key}: ${value}</li>`;
     affiliationsArray.push(affiliation);
-    console.log(affiliationsArray);
+    // console.log(affiliationsArray);
   }
   affiliationsList.innerHTML = affiliationsArray.join(" ");
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
   // closeModalButton.classList.add("close-modal");
-  closeModalButton.setAttribute("onclick", "closeAffiliationsModal()");
   affiliationsModal.appendChild(closeModalButton);
+  closeModalButton.setAttribute("onclick", "closeAffiliationsModal()");
+
+  // affiliationsList.appendChild(newaffiliationsArray);
 }
 
-function closeAffilationsModal() {
-  console.log("clicked close Affiliations modal");
+function closeAffiliationsModal() {
+  console.log("clicked close affiliations modal");
   let affiliationsModal = document.querySelector(".affiliations-modal");
   affiliationsModal.classList.add("hidden");
   document.querySelector(".affiliations-button").disabled = false;
@@ -353,8 +390,8 @@ function titleAnimation2() {
 
   let width = window.innerWidth;
 
-  console.log(htitle.getBoundingClientRect()); // htitle width = 119.53px
-  console.log(vtitle.getBoundingClientRect()); // vtitle width = 129.70px
+  // console.log(htitle.getBoundingClientRect()); // htitle width = 119.53px
+  // console.log(vtitle.getBoundingClientRect()); // vtitle width = 129.70px
   // searchbar width = 122.22 px
 
   // htitle ending position calculation
@@ -368,7 +405,7 @@ function titleAnimation2() {
   vtitle.style.left = width / 2 + 61 + 60 + "px";
 
   htitle.addEventListener("transitionend", () => {
-    getHeroesInfo();
+    // getHeroesInfo();
     searchAppear();
   });
 }
@@ -386,6 +423,8 @@ function searchAppear() {
 }
 
 function search() {
+  let heroesList = document.querySelector(".heroes-list");
+  heroesList.style.display = "grid";
   let nav = document.querySelector(".heroes-search");
   nav.addEventListener("click", () => {
     let search = document.querySelector("#heroes-search");
@@ -413,6 +452,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let width = window.innerWidth;
   // set Villain title start position at width of screen - width of title - 8px
   vtitle.style.left = width - 129.7 - 10 + "px";
+  getHeroesInfo();
   setTimeout(() => {
     titleAnimation1();
   }, 500);
