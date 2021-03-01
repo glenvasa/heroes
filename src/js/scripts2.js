@@ -20,6 +20,18 @@ function getHeroesInfo() {
   });
 }
 
+// code that creates array of only character names (removes table cells that are id numbers) 
+// on https://superheroapi.com/ids.html when run from console
+
+// const cells = document.querySelectorAll('.container-fluid td'); 
+// let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]; 
+// const names = Array.from(cells) 
+//               .map(cell => cell.innerText)
+//               .filter(name => !numbers.some(num => name.includes(num)))
+// console.log(names)
+
+
+
 // function getHeroesInfo() {
 //   for (i = 1; i < 20; i++) {
 //     fetch(`https://superheroapi.com/api/114585350670601/${i}`)
