@@ -17,4 +17,4 @@ Web application built with HTML, CSS, and Javascript that loads character data f
 
 ## View Deployed Project
 
-https://heroes-villains.netlify.app/
+"https://akabab.github.io/superhero-api/
