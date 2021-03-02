@@ -50,7 +50,7 @@ let heroesList = document.querySelector(".heroes-list");
 // }
 
 function getHeroesInfo() {
-  for (i = 1; i < 100; i++) {
+  for (i = 1; i < 732; i++) {
     fetch(`${apiUrl}/${i}.json`)
       .then((response) => response.json())
       .then((hero) => {
@@ -455,5 +455,5 @@ window.addEventListener("DOMContentLoaded", () => {
   getHeroesInfo();
   setTimeout(() => {
     titleAnimation1();
-  }, 500);
+  }, 3000);
 });
