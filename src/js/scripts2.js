@@ -49,14 +49,17 @@ let heroesList = document.querySelector(".heroes-list");
 //   });
 // }
 
+// skip is the array of number ids in data.js that are skipped by the API between 1 - 731
+
 function getHeroesInfo() {
-  for (i = 1; i < 732; i++) {
-    fetch(`${apiUrl}/${i}.json`)
-      .then((response) => response.json())
-      .then((hero) => {
-        localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
-        addListItem(hero);
-      });
+  for (i = 300; i < 732; i++) {
+    if (!skip.some((num) => i === num))
+      fetch(`${apiUrl}/${i}.json`)
+        .then((response) => response.json())
+        .then((hero) => {
+          localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
+          addListItem(hero);
+        });
 
     // .catch((error) => {
     //   console.log(error);
@@ -381,8 +384,8 @@ function titleAnimation1() {
 function titleAnimation2() {
   let htitle = document.querySelector(".nav-heroes");
   let vtitle = document.querySelector(".nav-villains");
-  htitle.style.transition = "all 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
-  vtitle.style.transition = "all 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
+  htitle.style.transition = "left 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
+  vtitle.style.transition = "left 2s cubic-bezier(0.1, 2.7, 0.58, 1)";
   htitle.style.color = "red";
   htitle.style.textShadow = "2px 1px black";
   vtitle.style.color = "black";
@@ -448,12 +451,23 @@ function search() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
+  let htitle = document.querySelector(".nav-heroes");
   let vtitle = document.querySelector(".nav-villains");
   let width = window.innerWidth;
   // set Villain title start position at width of screen - width of title - 8px
   vtitle.style.left = width - 129.7 - 10 + "px";
   getHeroesInfo();
+  htitle.style.visibility = "visible";
+  setTimeout(() => {
+    htitle.style.animation = "grow 2s ease-in";
+    htitle.style.transform = "scaleX(1.1) scaleY(1.1)";
+  }, 700);
+  setTimeout(() => {
+    vtitle.style.visibility = "visible";
+    vtitle.style.animation = "grow 2s ease-in";
+    vtitle.style.transform = "scaleX(1.1) scaleY(1.1)";
+  }, 3600);
   setTimeout(() => {
     titleAnimation1();
-  }, 3000);
+  }, 6500);
 });
