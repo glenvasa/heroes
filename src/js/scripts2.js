@@ -52,7 +52,7 @@ let heroesList = document.querySelector(".heroes-list");
 // skip is the array of number ids in data.js that are skipped by the API between 1 - 731
 
 function getHeroesInfo() {
-  for (i = 300; i < 732; i++) {
+  for (i = 400; i < 732; i++) {
     if (!skip.some((num) => i === num))
       fetch(`${apiUrl}/${i}.json`)
         .then((response) => response.json())
