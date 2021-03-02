@@ -1,53 +1,6 @@
 let heroTeam = [];
-// let apiUrl = "https://superheroapi.com/api/114585350670601/";
 let apiUrl = "https://akabab.github.io/superhero-api/api/id";
 let heroesList = document.querySelector(".heroes-list");
-
-// function getHeroesInfo() {
-//   console.log(superHeroesList);
-//   superHeroesList.forEach((name) => {
-//     fetch(`${apiUrl}search/${name}`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         data.results.forEach((hero) => {
-//           heroTeam.push(hero);
-//           localStorage.setItem(`${name}`, JSON.stringify(hero));
-//           addListItem(hero);
-//         });
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   });
-// }
-
-// code that creates array of only character names (removes table cells that are id numbers)
-// on https://superheroapi.com/ids.html when run from console
-
-// const cells = document.querySelectorAll('.container-fluid td');
-// let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-// const names = Array.from(cells)
-//               .map(cell => cell.innerText)
-//               .filter(name => !numbers.some(num => name.includes(num)))
-// console.log(names)
-
-// function getHeroesInfo() {
-//   console.log(superHeroesList);
-//   superHeroesList.forEach((name) => {
-//     fetch(`${apiUrl}search/${name}`)
-//       .then((response) => response.json())
-//       .then((data) => {
-//         data.results.forEach((hero) => {
-//           heroTeam.push(hero);
-//           localStorage.setItem(`${name}`, JSON.stringify(hero));
-//           addListItem(hero);
-//         });
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   });
-// }
 
 // skip is the array of number ids in data.js that are skipped by the API between 1 - 731
 
@@ -59,11 +12,10 @@ function getHeroesInfo() {
         .then((hero) => {
           localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
           addListItem(hero);
+        })
+        .catch((error) => {
+          console.log(error);
         });
-
-    // .catch((error) => {
-    //   console.log(error);
-    // });
   }
 }
 
@@ -78,29 +30,8 @@ function addListItem(hero) {
   addButtonListener();
 }
 
-// function addListItem() {
-//   console.log(heroTeam);
-//   let newHeroTeam = heroTeam.filter((item, i, ar) => ar.indexOf(item) === i);
-//   console.log(newHeroTeam);
-//   setTimeout(() => {
-//     let newHeroTeam2 = newHeroTeam.filter((item, i, ar) => ar.indexOf(item) === i);
-//       newHeroTeam2.map((hero) => {
-//     let listItem = document.createElement("li");
-//     listItem.classList.add("card");
-//     listItem.setAttribute("data-name", `${hero.name}`);
-//     // listItem.classList.add("list-group-item");
-//     heroesList.appendChild(listItem);
-//     listItem.innerHTML = `<img class="card-image" src="${hero.image.url}"><button type="button" class="card-button" id="hero-name" class="btn" data-toggle="modal"
-//     data-target="#exampleModal">${hero.name}</button>
-//       `;
-//   })
-//   })
-//   addButtonListener();
-// }
-
 function addButtonListener() {
   let cardButtons = document.querySelectorAll(".card-button");
-  //   console.log(cardButtons);
   cardButtons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       let name = e.target.innerText;
@@ -111,7 +42,6 @@ function addButtonListener() {
 
 function getDetails(name) {
   let hero = JSON.parse(localStorage.getItem(name));
-  // console.log(hero);
   showModal(hero);
 }
 
@@ -129,9 +59,7 @@ function showModal(hero) {
   let modalFooter = document.querySelector(".modal-footer");
 
   modalHeader.innerHTML = `<h1 class="modal-title">${hero.name}</h1>`;
-  //   let closeButton = document.createElement("button");
-  //   closeButton.innerHTML = `<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="hideModal()"><span aria-hidden="true">&times;</span></button>`;
-  //   modal.appendChild(closeButton);
+
   modalImageContainer.innerHTML = `<img class="modal-image" src="${hero.images.md}"/>`;
   modalFooter.innerHTML = `<button type="button" onclick="showPowers()" class="powers-button btn btn-secondary ">Powers</button>
   <button type="button" onclick="showAppearance()" class="appearance-button btn btn-secondary ">Appearance</button> 
@@ -166,15 +94,6 @@ function hideModal() {
   affiliationsModal.innerHTML = "";
 
   heroesList.style.display = "grid";
-  // appearanceModal.style.display = "none";
-  // bioModal.style.display = "none";
-  // powersModal.style.display = "none";
-  // workModal.style.display = "none";
-
-  // let body = document.querySelector(".body");
-  // body.classList.remove("overlay");
-
-  // localStorage.clear();
 }
 
 function showPowers() {
@@ -184,7 +103,6 @@ function showPowers() {
 
   let powersArray = [];
 
-  // powersModal.setAttribute("onclick", "console.log('hello')");
   powersModal.classList.remove("hidden");
   let powersTitle = document.createElement("h2");
   powersTitle.innerText = "Power Stats";
@@ -192,21 +110,16 @@ function showPowers() {
   let powersList = document.createElement("ul");
   powersModal.appendChild(powersList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  // console.log(character.powerstats);
   for (const [key, value] of Object.entries(character.powerstats)) {
     let power = `<li class="powersModalListItem">${key}: ${value}</li>`;
     powersArray.push(power);
-    // console.log(powersArray);
   }
   powersList.innerHTML = powersArray.join(" ");
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  // closeModalButton.classList.add("close-modal");
   powersModal.appendChild(closeModalButton);
   closeModalButton.setAttribute("onclick", "closePowersModal()");
-
-  // powersList.appendChild(newPowersArray);
 }
 
 function closePowersModal() {
@@ -223,7 +136,6 @@ function showAppearance() {
 
   let appearanceArray = [];
 
-  // powersModal.setAttribute("onclick", "console.log('hello')");
   appearanceModal.classList.remove("hidden");
   let appearanceTitle = document.createElement("h2");
   appearanceTitle.innerText = "Appearance";
@@ -231,17 +143,15 @@ function showAppearance() {
   let appearanceList = document.createElement("ul");
   appearanceModal.appendChild(appearanceList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  // console.log(character.appearance);
+
   for (const [key, value] of Object.entries(character.appearance)) {
     let appearance = `<li class="appearanceModalListItem">${key}: ${value}</li>`;
     appearanceArray.push(appearance);
-    // console.log(appearanceArray);
   }
   appearanceList.innerHTML = appearanceArray.join(" ");
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  // closeModalButton.classList.add("close-modal");
   closeModalButton.setAttribute("onclick", "closeAppearanceModal()");
   appearanceModal.appendChild(closeModalButton);
 }
@@ -267,17 +177,14 @@ function showBio() {
   let bioList = document.createElement("ul");
   bioModal.appendChild(bioList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  // console.log(character.biography);
   for (const [key, value] of Object.entries(character.biography)) {
     let bio = `<li class="bioModalListItem">${key}: ${value}</li>`;
     bioArray.push(bio);
-    // console.log(bioArray);
   }
   bioList.innerHTML = bioArray.join(" ");
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  // closeModalButton.classList.add("close-modal");
   closeModalButton.setAttribute("onclick", "closeBioModal()");
   bioModal.appendChild(closeModalButton);
 }
@@ -296,7 +203,6 @@ function showwork() {
 
   let workArray = [];
 
-  // powersModal.setAttribute("onclick", "console.log('hello')");
   workModal.classList.remove("hidden");
   let workTitle = document.createElement("h2");
   workTitle.innerText = "Work";
@@ -304,17 +210,15 @@ function showwork() {
   let workList = document.createElement("ul");
   workModal.appendChild(workList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  // console.log(character.work);
+
   for (const [key, value] of Object.entries(character.work)) {
     let work = `<li class="workModalListItem">${key}: ${value}</li>`;
     workArray.push(work);
-    // console.log(workArray);
   }
   workList.innerHTML = workArray.join(" ");
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  // closeModalButton.classList.add("close-modal");
   closeModalButton.setAttribute("onclick", "closeWorkModal()");
   workModal.appendChild(closeModalButton);
 }
@@ -333,7 +237,6 @@ function showAffiliations() {
 
   let affiliationsArray = [];
 
-  // affiliationsModal.setAttribute("onclick", "console.log('hello')");
   affiliationsModal.classList.remove("hidden");
   let affiliationsTitle = document.createElement("h2");
   affiliationsTitle.innerText = "Connections";
@@ -341,21 +244,17 @@ function showAffiliations() {
   let affiliationsList = document.createElement("ul");
   affiliationsModal.appendChild(affiliationsList);
   let character = JSON.parse(localStorage.getItem("hero"));
-  // console.log(character.affiliationstats);
+
   for (const [key, value] of Object.entries(character.connections)) {
     let affiliation = `<li class="affiliationsModalListItem">${key}: ${value}</li>`;
     affiliationsArray.push(affiliation);
-    // console.log(affiliationsArray);
   }
   affiliationsList.innerHTML = affiliationsArray.join(" ");
 
   let closeModalButton = document.createElement("button");
   closeModalButton.innerHTML = `<span>&times;</span>`;
-  // closeModalButton.classList.add("close-modal");
   affiliationsModal.appendChild(closeModalButton);
   closeModalButton.setAttribute("onclick", "closeAffiliationsModal()");
-
-  // affiliationsList.appendChild(newaffiliationsArray);
 }
 
 function closeAffiliationsModal() {
@@ -408,7 +307,6 @@ function titleAnimation2() {
   vtitle.style.left = width / 2 + 61 + 60 + "px";
 
   htitle.addEventListener("transitionend", () => {
-    // getHeroesInfo();
     searchAppear();
   });
 }
@@ -426,20 +324,19 @@ function searchAppear() {
 }
 
 function search() {
+  // displays previously loaded character cards that were hidden while nav animation ran
   let heroesList = document.querySelector(".heroes-list");
   heroesList.style.display = "grid";
+
   let nav = document.querySelector(".heroes-search");
   nav.addEventListener("click", () => {
     let search = document.querySelector("#heroes-search");
     let li = Array.from(document.querySelectorAll(".card"));
-    console.log(li);
-    search.addEventListener("keyup", () => {
-      console.log(search.value);
-      value = search.value;
 
+    search.addEventListener("keyup", () => {
+      value = search.value.toLowerCase();
       for (i = 0; i < li.length; i++) {
         txtAttrib = li[i].getAttribute("data-name");
-        console.log(txtAttrib);
         if (txtAttrib.toLowerCase().indexOf(value) > -1) {
           li[i].style.display = "";
         } else {
@@ -456,7 +353,9 @@ window.addEventListener("DOMContentLoaded", () => {
   let width = window.innerWidth;
   // set Villain title start position at width of screen - width of title - 8px
   vtitle.style.left = width - 129.7 - 10 + "px";
+
   getHeroesInfo();
+
   htitle.style.visibility = "visible";
   setTimeout(() => {
     htitle.style.animation = "grow 2s ease-in";
