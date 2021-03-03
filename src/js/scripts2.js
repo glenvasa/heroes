@@ -65,9 +65,9 @@ function showModal(hero) {
   modalHeader.innerHTML = `<h1 class="modal-title">${hero.name}</h1>`;
 
   modalImageContainer.innerHTML = `<img class="modal-image" src="${hero.images.md}"/>`;
-  modalFooter.innerHTML = `<button type="button" onclick="showPowers()" class="powers-button btn btn-secondary ">Powers</button>
+  modalFooter.innerHTML = `<button type="button" onclick="showPowers()" class="powers-button btn btn-secondary ">Power Stats</button>
   <button type="button" onclick="showAppearance()" class="appearance-button btn btn-secondary ">Appearance</button> 
-  <button type="button" onclick="showBio()" class="bio-button btn btn-secondary ">Bio</button><button type="button" onclick="showwork()" class="work-button btn btn-secondary ">Work</button>
+  <button type="button" onclick="showBio()" class="bio-button btn btn-secondary ">Biography</button><button type="button" onclick="showwork()" class="work-button btn btn-secondary ">Work</button>
   <button type="button" onclick="showAffiliations()" class="affiliations-button btn btn-secondary ">Connections</button><button type="button" class="btn btn-secondary close-modal" onclick="hideModal()">Close</button>`;
 
   localStorage.setItem("hero", JSON.stringify(hero));
@@ -104,7 +104,7 @@ function hideModal() {
 function showPowers() {
   let powersModal = document.querySelector(".powers-modal");
   powersModal.style.display = "";
-  document.querySelector(".powers-button").disabled = true;
+  // document.querySelector(".powers-button").disabled = true;
 
   let powersArray = [];
 
@@ -137,7 +137,7 @@ function closePowersModal() {
 function showAppearance() {
   let appearanceModal = document.querySelector(".appearance-modal");
   appearanceModal.style.display = "";
-  document.querySelector(".appearance-button").disabled = true;
+  // document.querySelector(".appearance-button").disabled = true;
 
   let appearanceArray = [];
 
@@ -171,7 +171,7 @@ function closeAppearanceModal() {
 function showBio() {
   let bioModal = document.querySelector(".bio-modal");
   bioModal.style.display = "";
-  document.querySelector(".bio-button").disabled = true;
+  // document.querySelector(".bio-button").disabled = true;
 
   let bioArray = [];
 
@@ -204,7 +204,7 @@ function closeBioModal() {
 function showwork() {
   let workModal = document.querySelector(".work-modal");
   workModal.style.display = "";
-  document.querySelector(".work-button").disabled = true;
+  // document.querySelector(".work-button").disabled = true;
 
   let workArray = [];
 
@@ -238,7 +238,7 @@ function closeWorkModal() {
 function showAffiliations() {
   let affiliationsModal = document.querySelector(".affiliations-modal");
   affiliationsModal.style.display = "";
-  document.querySelector(".affiliations-button").disabled = true;
+  // document.querySelector(".affiliations-button").disabled = true;
 
   let affiliationsArray = [];
 
