@@ -5,7 +5,7 @@ let heroesList = document.querySelector(".heroes-list");
 // skip is the array of number ids in data.js that are skipped by the API between 1 - 731
 
 function getHeroesInfo() {
-  for (i = 400; i < 732; i++) {
+  for (i = 200; i < 332; i++) {
     if (!skip.some((num) => i === num))
       fetch(`${apiUrl}/${i}.json`)
         .then((response) => response.json())
@@ -116,7 +116,7 @@ function showPowers() {
   powersModal.appendChild(powersList);
   let character = JSON.parse(localStorage.getItem("hero"));
   for (const [key, value] of Object.entries(character.powerstats)) {
-    let power = `<li class="powersModalListItem">${key}: ${value}</li>`;
+    let power = `<li><span class="powers-key">${key}:</span>  ${value}</li>`;
     powersArray.push(power);
   }
   powersList.innerHTML = powersArray.join(" ");
@@ -150,7 +150,7 @@ function showAppearance() {
   let character = JSON.parse(localStorage.getItem("hero"));
 
   for (const [key, value] of Object.entries(character.appearance)) {
-    let appearance = `<li class="appearanceModalListItem">${key}: ${value}</li>`;
+    let appearance = `<li><span class="appearance-key">${key}:</span> ${value}</li>`;
     appearanceArray.push(appearance);
   }
   appearanceList.innerHTML = appearanceArray.join(" ");
@@ -183,7 +183,7 @@ function showBio() {
   bioModal.appendChild(bioList);
   let character = JSON.parse(localStorage.getItem("hero"));
   for (const [key, value] of Object.entries(character.biography)) {
-    let bio = `<li class="bioModalListItem">${key}: ${value}</li>`;
+    let bio = `<li><span class="bio-key">${key}:</span> ${value}</li>`;
     bioArray.push(bio);
   }
   bioList.innerHTML = bioArray.join(" ");
@@ -217,7 +217,7 @@ function showwork() {
   let character = JSON.parse(localStorage.getItem("hero"));
 
   for (const [key, value] of Object.entries(character.work)) {
-    let work = `<li class="workModalListItem">${key}: ${value}</li>`;
+    let work = `<li><span class="work-key">${key}:</span> ${value}</li>`;
     workArray.push(work);
   }
   workList.innerHTML = workArray.join(" ");
@@ -251,7 +251,7 @@ function showAffiliations() {
   let character = JSON.parse(localStorage.getItem("hero"));
 
   for (const [key, value] of Object.entries(character.connections)) {
-    let affiliation = `<li class="affiliationsModalListItem">${key}: ${value}</li>`;
+    let affiliation = `<li><span class="affiliations-key">${key}:</span> ${value}</li>`;
     affiliationsArray.push(affiliation);
   }
   affiliationsList.innerHTML = affiliationsArray.join(" ");
