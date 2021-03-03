@@ -47,6 +47,10 @@ function getDetails(name) {
 
 function showModal(hero) {
   heroesList.style.display = "none";
+  let cards = document.querySelectorAll(".card");
+  cards.forEach((card) => (card.style.animation = "none"));
+  cards.forEach((card) => (card.style.transform = "scaleX(1) scaleY(1)"));
+
   let modal = document.querySelector(".modal-dialog");
   modal.classList.remove("hidden");
   // let body = document.querySelector(".body");
@@ -84,6 +88,7 @@ function hideModal() {
   let bioModal = document.querySelector(".bio-modal");
   let workModal = document.querySelector(".work-modal");
   let affiliationsModal = document.querySelector(".affiliations-modal");
+
   let modal = document.querySelector(".modal-dialog");
   modal.classList.add("hidden");
 
@@ -319,14 +324,21 @@ function searchAppear() {
   setTimeout(() => {
     let navSearch = document.querySelector(".nav-search");
     navSearch.style.display = "block";
-  }, 1000);
+  }, 2500);
   search();
 }
 
 function search() {
   // displays previously loaded character cards that were hidden while nav animation ran
   let heroesList = document.querySelector(".heroes-list");
-  heroesList.style.display = "grid";
+  let cards = document.querySelectorAll(".card");
+  // heroesList.classList.add("fade-in");
+  setTimeout(() => {
+    heroesList.style.display = "grid";
+    // cards.forEach((card) => (card.style.animation = "cardGrow .5s ease-in;"));
+  }, 500);
+
+  cards.forEach((card) => (card.style.transform = "scaleX(1) scaleY(1)"));
 
   let nav = document.querySelector(".heroes-search");
   nav.addEventListener("click", () => {
