@@ -1,11 +1,11 @@
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import colors from 'colors'
-import users from './data/users.js'
-import products from './data/products.js'
-import User from './models/userModel.js'
-import Product from './models/productModel.js'
-import Order from './models/orderModel.js'
+
+import characters from './data/characters.js'
+
+import Character from './models/characterModel.js'
+
 import connectDB from './config/db.js'
 
 dotenv.config()
@@ -16,19 +16,9 @@ const importData = async () => {
     try {
         // await b/c returns a promise
         // this completely wipes out db before we import data
-        await Order.deleteMany()
-        await Product.deleteMany()
-        await User.deleteMany()
-
-        const createdUsers = await User.insertMany(users)
-        
-        const adminUser = createdUsers[0]._id
-        // we want User admin id to be set as the user for all products
-        const sampleProducts = products.map(product => {
-            return {...product, user: adminUser}
-        })
- 
-        await Product.insertMany(sampleProducts)
+        await Character.deleteMany()
+    
+        await Character.insertMany(characters)
 
         console.log('Data Imported!'.green.inverse)
         process.exit()
@@ -42,10 +32,8 @@ const destroyData = async () => {
     try {
         // await b/c returns a promise
         // this completely wipes out db 
-        await Order.deleteMany()
-        await Product.deleteMany()
-        await User.deleteMany()
-
+        await Character.deleteMany()
+       
         console.log('Data Destroyed'.red)
         process.exit()
     } catch (error) {
