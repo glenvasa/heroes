@@ -1,3 +1,6 @@
+// data source: https://akabab.github.io/superhero-api, 
+// which obtained originally from: https://superheroapi.com
+
 const characters = [
   {
     "id": 1,
