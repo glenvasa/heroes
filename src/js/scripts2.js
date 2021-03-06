@@ -1,22 +1,38 @@
 let heroTeam = [];
-let apiUrl = "https://akabab.github.io/superhero-api/api/id";
+// let apiUrl = "https://akabab.github.io/superhero-api/api/id";
+let apiUrl = "http://localhost:5000";
 let heroesList = document.querySelector(".heroes-list");
 
 // skip is the array of number ids in data.js that are skipped by the API between 1 - 731
 
+// function getHeroesInfo() {
+//   for (i = 200; i < 332; i++) {
+//     if (!skip.some((num) => i === num))
+//       fetch(`${apiUrl}/${i}.json`)
+//         .then((response) => response.json())
+//         .then((hero) => {
+//           localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
+//           addListItem(hero);
+//         })
+//         .catch((error) => {
+//           console.log(error);
+//         });
+//   }
+// }
+
 function getHeroesInfo() {
-  for (i = 200; i < 332; i++) {
-    if (!skip.some((num) => i === num))
-      fetch(`${apiUrl}/${i}.json`)
-        .then((response) => response.json())
-        .then((hero) => {
-          localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
-          addListItem(hero);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-  }
+  // for (i = 200; i < 332; i++) {
+  //   if (!skip.some((num) => i === num))
+  fetch(`${apiUrl}`)
+    .then((response) => response.json())
+    .then((heroes) => {
+      heroes.forEach((hero) => {
+        if (hero.id < 300){
+        localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
+        addListItem(hero);
+      }
+      });
+    });
 }
 
 function addListItem(hero) {
