@@ -6,7 +6,6 @@ import characters from "./data/characters.js";
 // import connectDB from "./config/db.js";
 
 dotenv.config();
-
 // connectDB();
 
 const app = express();
