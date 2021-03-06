@@ -35,7 +35,7 @@ app.use(
 app.get("/", (req, res) => {
   Character.find()
     .then((characters) => {
-      res.status(201).json(characters);
+      res.status(200).json(characters);
     })
     .catch((error) => {
       console.error(error);
