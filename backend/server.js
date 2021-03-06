@@ -2,11 +2,13 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import colors from "colors";
-import characters from "./data/characters.js";
-// import connectDB from "./config/db.js";
+// import characters from "./data/characters.js";
+import connectDB from "./config/db.js";
+import Character from './models/characterModel.js'
+
 
 dotenv.config();
-// connectDB();
+connectDB();
 
 const app = express();
 
@@ -31,10 +33,16 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.json(characters);
+  Character.find()
+    .then((characters) => {
+      res.status(201).json(characters);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("Error" + error)
+    })
 });
 
-// app.use('/api/products', productRoutes)
 
 const PORT = process.env.PORT || 5000;
 
