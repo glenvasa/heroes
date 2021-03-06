@@ -1,5 +1,6 @@
 // let apiUrl = "https://akabab.github.io/superhero-api/api/id";
-let apiUrl = "http://localhost:5000";
+// let apiUrl = "http://localhost:5000";
+let apiUrl = "https://heroes-villains.herokuapp.com/";
 let heroesList = document.querySelector(".heroes-list");
 
 function getHeroesInfo() {
