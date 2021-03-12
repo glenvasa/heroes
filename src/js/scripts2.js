@@ -102,6 +102,10 @@ function showPowers() {
   let powersModal = document.querySelector(".powers-modal");
   powersModal.style.display = "";
   // document.querySelector(".powers-button").disabled = true;
+  let powersButton = document.querySelector(".powers-button");
+  powersButton.removeEventListener("click", () => {
+    showPowers();
+  });
 
   let powersArray = [];
 
