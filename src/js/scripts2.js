@@ -22,20 +22,22 @@ function addListItem(hero) {
   listItem.setAttribute("data-name", `${hero.name}`);
   heroesList.appendChild(listItem);
   listItem.innerHTML = `<img class="card-image" src="${hero.images.md}"><button type="button"  
-  id="hero-name" class="btn card-button hero-name">${hero.name}</button>`;
-
-  addButtonListener();
+  id="hero-name" class="btn card-button hero-name" onclick="getDetails('${hero.name}')">${hero.name}</button>`;
+  // remove this function and add onlick above;
+  // each time a character loaded it adds eventlisteners to each existing character;
+  // if 200 characters loaded the first character will have 200 eventlistners.
+  // addButtonListener();
 }
 
-function addButtonListener() {
-  let cardButtons = document.querySelectorAll(".card-button");
-  cardButtons.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      let name = e.target.innerText;
-      getDetails(name);
-    });
-  });
-}
+// function addButtonListener() {
+//   let cardButtons = document.querySelectorAll(".card-button");
+//   cardButtons.forEach((btn) => {
+//     btn.addEventListener("click", (e) => {
+//       let name = e.target.innerText;
+//       getDetails(name);
+//     });
+//   });
+// }
 
 function getDetails(name) {
   let hero = JSON.parse(localStorage.getItem(name));
@@ -45,6 +47,7 @@ function getDetails(name) {
 function showModal(hero) {
   heroesList.style.display = "none";
   let cards = document.querySelectorAll(".card");
+  // move this code to after cards loaded initially so it doesn't run each time a card button clicked
   cards.forEach((card) => (card.style.animation = "none"));
   cards.forEach((card) => (card.style.transform = "scaleX(1) scaleY(1)"));
 
