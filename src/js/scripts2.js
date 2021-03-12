@@ -134,7 +134,7 @@ function closePowersModal() {
 function showAppearance() {
   let appearanceModal = document.querySelector(".appearance-modal");
   appearanceModal.style.display = "";
-  // document.querySelector(".appearance-button").disabled = true;
+  document.querySelector(".appearance-button").disabled = true;
 
   let appearanceArray = [];
 
