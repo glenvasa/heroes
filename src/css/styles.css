@@ -264,11 +264,11 @@ body {
   font-size: 50px;
 }
 
-.modal-body {
-  /* box-shadow: 5px 3px 10px black; */
-  /* border-left: 2px solid black;
-  border-right: 2px solid black; */
-}
+/* .modal-body {
+   box-shadow: 5px 3px 10px black; 
+   border-left: 2px solid black;
+  border-right: 2px solid black; 
+}  */
 
 .hidden {
   display: none;
@@ -336,9 +336,9 @@ body {
   border: 1px solid black;
 }
 
-.hide-modal {
-  /* background-color: red; */
-}
+/* .hide-modal {
+  background-color: red;
+} */
 
 .powers-button {
   background-color: red;
@@ -357,6 +357,9 @@ body {
   background-color: red;
   font-family: Inknut Antiqua;
 }
+
+/* .appearance-button:disabled {
+} */
 
 .appearance-button:hover {
   background-color: white;
