@@ -340,64 +340,33 @@ body {
   background-color: red;
 } */
 
-.powers-button {
-  background-color: red;
-  font-family: Inknut Antiqua;
-}
-
-.powers-button:hover {
-  background-color: white;
-  color: red;
-  border: 1px solid red;
-}
-
-.appearance-button {
-  /* position: relative; */
-  /* z-index: -1; */
-  background-color: red;
-  font-family: Inknut Antiqua;
-}
-
-/* .appearance-button:disabled {
-} */
-
-.appearance-button:hover {
-  background-color: white;
-  color: red;
-  border: 1px solid red;
-}
-
-.bio-button {
-  background-color: red;
-  font-family: Inknut Antiqua;
-}
-
-.bio-button:hover {
-  background-color: white;
-  color: red;
-  border: 1px solid red;
-}
-
-.work-button {
-  background-color: red;
-  font-family: Inknut Antiqua;
-}
-
-.work-button:hover {
-  background-color: white;
-  color: red;
-  border: 1px solid red;
-}
-
+.powers-button,
+.appearance-button,
+.bio-button,
+.work-button,
 .affiliations-button {
   background-color: red;
   font-family: Inknut Antiqua;
 }
 
+.powers-button:hover,
+.appearance-button:hover,
+.bio-button:hover,
+.work-button:hover,
 .affiliations-button:hover {
   background-color: white;
   color: red;
   border: 1px solid red;
+}
+
+/* need to set opacity to 1 !important b/c when buttons disabled 
+they have a default opacity of .65 which makes modal animation display below buttons */
+.powers-button:disabled,
+.appearance-button:disabled,
+.bio-button:disabled,
+.work-button:disabled,
+.affiliations-button:disabled {
+  opacity: 1 !important;
 }
 
 .powers-modal {
