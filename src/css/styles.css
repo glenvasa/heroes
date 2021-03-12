@@ -407,7 +407,7 @@ body {
   background-color: #ececec;
   z-index: 200;
   box-shadow: 5px 3px 10px black;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
 }
 
 .powers-modal > button {
