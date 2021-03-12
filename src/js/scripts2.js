@@ -8,10 +8,10 @@ function getHeroesInfo() {
     .then((response) => response.json())
     .then((heroes) => {
       heroes.forEach((hero) => {
-        if (hero.id < 300) {
-          localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
-          addListItem(hero);
-        }
+        // if (hero.id < 300) {
+        localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
+        addListItem(hero);
+        // }
       });
     });
 }
@@ -45,6 +45,11 @@ function getDetails(name) {
 }
 
 function showModal(hero) {
+  // gets scroll position when card button clicked to use later when modal closed
+  let scroll = window.pageYOffset;
+  localStorage.setItem("scroll", JSON.stringify(scroll));
+
+  // hides all character cards when modal opens
   heroesList.style.display = "none";
   let cards = document.querySelectorAll(".card");
   // move this code to after cards loaded initially so it doesn't run each time a card button clicked
@@ -99,12 +104,16 @@ function hideModal() {
   affiliationsModal.innerHTML = "";
 
   heroesList.style.display = "grid";
+
+  // gets scroll position when card button clicked and returns to same position after modal closed
+  let scroll = JSON.parse(localStorage.getItem("scroll"));
+  window.scrollTo(0, scroll);
 }
 
 function showPowers() {
   let powersModal = document.querySelector(".powers-modal");
   powersModal.style.display = "";
-  // document.querySelector(".powers-button").disabled = true;
+  document.querySelector(".powers-button").disabled = true;
   let powersButton = document.querySelector(".powers-button");
   powersButton.removeEventListener("click", () => {
     showPowers();
@@ -175,7 +184,7 @@ function closeAppearanceModal() {
 function showBio() {
   let bioModal = document.querySelector(".bio-modal");
   bioModal.style.display = "";
-  // document.querySelector(".bio-button").disabled = true;
+  document.querySelector(".bio-button").disabled = true;
 
   let bioArray = [];
 
@@ -208,7 +217,7 @@ function closeBioModal() {
 function showwork() {
   let workModal = document.querySelector(".work-modal");
   workModal.style.display = "";
-  // document.querySelector(".work-button").disabled = true;
+  document.querySelector(".work-button").disabled = true;
 
   let workArray = [];
 
@@ -242,7 +251,7 @@ function closeWorkModal() {
 function showAffiliations() {
   let affiliationsModal = document.querySelector(".affiliations-modal");
   affiliationsModal.style.display = "";
-  // document.querySelector(".affiliations-button").disabled = true;
+  document.querySelector(".affiliations-button").disabled = true;
 
   let affiliationsArray = [];
 
