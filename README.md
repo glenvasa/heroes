@@ -20,4 +20,5 @@ Web application built with JavaScript, Node, and Express that loads 500+ charact
 
 ## View Deployed Project
 
-http://heroes-villains.netlify.app/
+- Frontend hosted with Netlify: http://heroes-villains.netlify.app/
+- Backend hosted with Heroku: https://heroes-villains.herokuapp.com/
