@@ -3,8 +3,8 @@
 Web application built with JavaScript, Node, and Express that loads 500+ characters from MongoDB and displays detailed data in modals and sub-modals.
 
 ## Screenshots
-<img src="public/Screenshot (242).png" width="850" height="650">  
-<img src="public/Screenshot (245).png" width="850" height="650">
+<img src="public/Screenshot (242).png">  
+<img src="public/Screenshot (245).png">
  
 ## Development Path
 - Initially this project was built with JavaScript to fetch all character data from an external API (https://akabab.github.io/superhero-api/).
