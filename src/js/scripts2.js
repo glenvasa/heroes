@@ -8,10 +8,10 @@ function getHeroesInfo() {
     .then((response) => response.json())
     .then((heroes) => {
       heroes.forEach((hero) => {
-        // if (hero.id < 300) {
+        if (hero.id < 300) {
         localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
         addListItem(hero);
-        // }
+        }
       });
     });
 }
