@@ -9,8 +9,8 @@ function getHeroesInfo() {
     .then((heroes) => {
       heroes.forEach((hero) => {
         if (hero.id < 450) {
-        localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
-        addListItem(hero);
+          localStorage.setItem(`${hero.name}`, JSON.stringify(hero));
+          addListItem(hero);
         }
       });
     });
@@ -51,6 +51,8 @@ function showModal(hero) {
 
   // hides all character cards when modal opens
   heroesList.style.display = "none";
+  let search = document.querySelector(".heroes-search");
+  search.classList.add("adjust-search");
   let cards = document.querySelectorAll(".card");
   // move this code to after cards loaded initially so it doesn't run each time a card button clicked
   cards.forEach((card) => (card.style.animation = "none"));
@@ -105,6 +107,8 @@ function hideModal() {
 
   heroesList.style.display = "grid";
 
+  let search = document.querySelector(".heroes-search");
+  search.classList.remove("adjust-search");
   // gets scroll position when card button clicked and returns to same position after modal closed
   let scroll = JSON.parse(localStorage.getItem("scroll"));
   window.scrollTo(0, scroll);
