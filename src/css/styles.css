@@ -115,6 +115,10 @@ body {
   /* background-color: black; */
 }
 
+.adjust-search {
+  transform: translateX(-8px);
+}
+
 .overlay {
   position: fixed;
   width: 100%;
@@ -677,4 +681,69 @@ they have a default opacity of .65 which makes modal animation display below but
   text-shadow: 2px 1px 7px black;
   color: rgb(81, 0, 128);
   margin: 12px 0px 15px;
+}
+
+@media all and (max-width: 1700px) {
+  .modal-dialog {
+    transform: scaleX(0.85) scaleY(0.85);
+  }
+  /* .appearance-modal,
+  .affiliations-modal,
+  .powers-modal,
+  .work-modal,
+  .bio-modal {
+    transform: scaleX(0.75) scaleY(0.75);
+  } */
+  .powers-modal {
+    top: -9%;
+    left: 105%;
+  }
+  .appearance-modal {
+    top: 26%;
+    left: 105%;
+  }
+  .work-modal {
+    top: 61%;
+    left: 105%;
+  }
+  .affiliations-modal {
+    top: -9%;
+    left: -125%;
+  }
+  .bio-modal {
+    top: -9%;
+    right: 105%;
+  }
+  .modal-content {
+    top: -45px;
+  }
+}
+
+@media all and (max-width: 1491px) {
+  .modal-dialog {
+    transform: scaleX(0.7) scaleY(0.7);
+  }
+  .powers-modal {
+    top: -20%;
+    left: 105%;
+  }
+  .appearance-modal {
+    top: 22%;
+    left: 105%;
+  }
+  .work-modal {
+    top: 65%;
+    left: 105%;
+  }
+  .affiliations-modal {
+    top: -20%;
+    left: -125%;
+  }
+  .bio-modal {
+    top: -20%;
+    right: 105%;
+  }
+  .modal-content {
+    top: -95px;
+  }
 }
