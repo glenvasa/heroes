@@ -747,3 +747,32 @@ they have a default opacity of .65 which makes modal animation display below but
     top: -95px;
   }
 }
+
+/* @media all and (max-width: 1241px) {
+  .modal-dialog {
+    transform: scaleX(0.7) scaleY(0.7);
+  }
+  .powers-modal {
+    top: -20%;
+    left: 105%;
+  }
+  .appearance-modal {
+    top: 22%;
+    left: 105%;
+  }
+  .work-modal {
+    top: 65%;
+    left: 105%;
+  }
+  .affiliations-modal {
+    top: -20%;
+    left: -125%;
+  }
+  .bio-modal {
+    top: -20%;
+    right: 105%;
+  }
+  .modal-content {
+    top: -95px;
+  }
+} */
