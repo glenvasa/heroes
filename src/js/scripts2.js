@@ -60,10 +60,7 @@ function showModal(hero) {
 
   let modal = document.querySelector(".modal-dialog");
   modal.classList.remove("hidden");
-  // let body = document.querySelector(".body");
-  // body.classList.add("overlay");
-  //   let overlay = document.querySelector(".overlay");
-  //   overlay.addEventListener("click", hideModal);
+  
   let modalBody = document.querySelector(".modal-body");
   let modalImageContainer = document.querySelector(".modal-image-container");
   let modalHeader = document.querySelector(".modal-header");
