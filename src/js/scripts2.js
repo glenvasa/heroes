@@ -1,5 +1,3 @@
-// let apiUrl = "https://akabab.github.io/superhero-api/api/id";
-// let apiUrl = "http://localhost:5000";
 let apiUrl = "https://heroes-villains.herokuapp.com/";
 let heroesList = document.querySelector(".heroes-list");
 
@@ -23,21 +21,8 @@ function addListItem(hero) {
   heroesList.appendChild(listItem);
   listItem.innerHTML = `<img class="card-image" src="${hero.images.md}"><button type="button"  
   id="hero-name" class="btn card-button hero-name" onclick="getDetails('${hero.name}')">${hero.name}</button>`;
-  // remove this function and add onlick above;
-  // each time a character loaded it adds eventlisteners to each existing character;
-  // if 200 characters loaded the first character will have 200 eventlistners.
-  // addButtonListener();
 }
 
-// function addButtonListener() {
-//   let cardButtons = document.querySelectorAll(".card-button");
-//   cardButtons.forEach((btn) => {
-//     btn.addEventListener("click", (e) => {
-//       let name = e.target.innerText;
-//       getDetails(name);
-//     });
-//   });
-// }
 
 function getDetails(name) {
   let hero = JSON.parse(localStorage.getItem(name));
